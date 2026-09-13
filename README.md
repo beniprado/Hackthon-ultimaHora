@@ -1,6 +1,6 @@
-# 🎓🔒 Modo Aula — Plataforma Integrada de Gestão & Foco Pedagógico Digital
+# 🎓🔒 OnFocus — Plataforma Integrada de Gestão & Foco Pedagógico Digital
 
-> **Solução desenvolvida para o Hackathon Última Hora:** Transformação temporária e segura do smartphone do aluno em uma ferramenta pedagógica ativa via aproximação NFC, sem vigilância invasiva e com total conformidade à LGPD.
+> **Solução desenvolvida para o Hackathon Última Hora:** Transformação temporária e segura do smartphone do aluno em uma ferramenta pedagógica ativa via escaneamento de QR Code, sem vigilância invasiva e com total conformidade à LGPD.
 
 ---
 
@@ -25,9 +25,9 @@
 
 ## 📌 Visão Geral da Solução
 
-O **Modo Aula** resolve o dilema entre o potencial pedagógico dos smartphones e as distrações digitais em sala de aula. Em vez de recolher os aparelhos ou adotar softwares invasivos de espionagem, a plataforma estabelece uma **política pedagógica temporária**:
+O **OnFocus** resolve o dilema entre o potencial pedagógico dos smartphones e as distrações digitais em sala de aula. Em vez de recolher os aparelhos ou adotar softwares invasivos de espionagem, a plataforma estabelece uma **política pedagógica temporária**:
 
-1. **Aproximação NFC**: O aluno encosta o smartphone na Tag NFC da carteira/sala no início da aula.
+1. **Leitura de QR Code**: O aluno escaneia com o smartphone o QR Code da carteira/sala no início da aula.
 2. **Whitelist Pedagógica**: O aparelho entra no *Launcher Protegido*, disponibilizando exclusivamente os aplicativos autorizados pelo professor para aquela disciplina (ex: GeoGebra, Calculadora, Dicionário).
 3. **Foco Ativo**: Notificações, redes sociais e jogos são suspensos durante o período da aula.
 4. **Desbloqueio Automático**: Ao término do horário ou por comando do docente, o smartphone retorna instantaneamente ao modo pessoal do aluno.
@@ -39,7 +39,7 @@ O **Modo Aula** resolve o dilema entre o potencial pedagógico dos smartphones e
 ```mermaid
 graph TD
     subgraph "🏫 Ambiente Escolar"
-        NFC[🏷️ Tag NFC da Sala / Carteira]
+        QRCode[🔳 QR Code da Sala / Carteira]
         Prof[👨‍🏫 Professor / Gestor]
         Aluno[📱 Smartphone do Aluno]
     end
@@ -54,7 +54,7 @@ graph TD
 
     subgraph "📱 App Mobile (Aluno)"
         Standby[1. Standby & Conexão de Rede]
-        ScanNFC[2. Validação NFC Criptográfica]
+        ScanQR[2. Validação Criptográfica do QR Code]
         Launcher[3. Launcher Protegido]
         AppEducativo[4. App Pedagógico em Execução]
         Bloqueio[5. Alerta de Foco / App Restrito]
@@ -62,8 +62,8 @@ graph TD
     end
 
     Prof -->|Configura Políticas & Acompanha| Dash
-    NFC -.->|Leitura por Proximidade| Aluno
-    Aluno --> Standby --> ScanNFC --> Launcher --> AppEducativo
+    QRCode -.->|Escaneamento pela Câmera| Aluno
+    Aluno --> Standby --> ScanQR --> Launcher --> AppEducativo
     Launcher -->|Tentativa de Distração| Bloqueio
     Prof -->|Encerra Aula| Unlock
     Aluno <-->|WebSockets / REST API (Telemetry & Policy)| Dash
@@ -94,7 +94,7 @@ plataforma/
 
 ## 🖥️ 1. Módulo Gestor (Web SaaS)
 
-Localizado no diretório [`/Gestor`](file:///Users/beniprado/Desktop/plataforma/Gestor), o **Gestor** é uma aplicação web moderna voltada para coordenadores pedagógicos, diretores e professores.
+Localizado no diretório `/Gestor`, o **Gestor** é uma aplicação web moderna voltada para coordenadores pedagógicos, diretores e professores.
 
 ### Funcionalidades Principais do Gestor
 
@@ -116,10 +116,10 @@ Localizado no diretório [`/Gestor`](file:///Users/beniprado/Desktop/plataforma/
   - Telemetria de bateria, status de conexão (Conectado, Ocioso, Bloqueado, Alerta) e aplicativo ativo por aluno.
   - Alertas automáticos para inatividade prolongada ou tentativas de abertura de apps não autorizados.
 - 📈 **Relatórios & Analytics**:
-  - Frequência diária de presença e taxa de adesão ao Modo Aula.
+  - Frequência diária de presença e taxa de adesão ao OnFocus.
   - Ranking dos aplicativos mais utilizados e engajamento por disciplina.
 - ⚙️ **Configurações, Segurança & LGPD**:
-  - Gerenciamento de chaves criptográficas para Tags NFC (ECDSA P-256).
+  - Gerenciamento de chaves criptográficas para os QR Codes (ECDSA P-256).
   - Logs de auditoria imutáveis com minimização de dados.
 
 ### Tecnologias do Gestor
@@ -137,36 +137,36 @@ Localizado no diretório [`/Gestor`](file:///Users/beniprado/Desktop/plataforma/
 
 ## 📱 2. Módulo App Mobile (Dispositivo do Aluno)
 
-Localizado no diretório [`/AppMobile`](file:///Users/beniprado/Desktop/plataforma/AppMobile), o **App Mobile** é o cliente Android/React Native responsável pela aplicação das restrições e entrega da interface pedagógica no smartphone do estudante.
+Localizado no diretório `/AppMobile`, o **App Mobile** é o cliente Android/React Native responsável pela aplicação das restrições e entrega da interface pedagógica no smartphone do estudante.
 
 ### O Ciclo do Aluno em 6 Etapas
 
 1. **Tela 1 — Standby & Conexão**:
    - O aluno abre o aplicativo na escola e verifica a conexão com a rede Wi-Fi institucional segura.
-2. **Tela 2 — Scan NFC da Sala**:
-   - Ao entrar na sala de aula, o aluno aproxima o smartphone da Tag NFC fixada na mesa ou no ambiente.
-   - O app valida a assinatura digital da Tag (chave ECDSA) e registra a presença na aula ativa.
+2. **Tela 2 — Scan do QR Code da Sala**:
+   - Ao entrar na sala de aula, o aluno escaneia o QR Code fixado na mesa ou no ambiente.
+   - O app valida a assinatura digital do QR Code (chave ECDSA) e registra a presença na aula ativa.
 3. **Tela 3 — Launcher Protegido**:
-   - O launcher padrão do Android é temporariamente substituído pelo *Launcher Seguro Modo Aula*.
+   - O launcher padrão do Android é temporariamente substituído pelo *Launcher Seguro OnFocus*.
    - Apenas os ícones dos aplicativos liberados para a aula atual ficam visíveis e acessíveis.
 4. **Tela 4 — App Educacional em Execução**:
    - O aluno utiliza a ferramenta pedagógica designada (exemplo: **GeoGebra interativo**, calculadora, leitor de PDF).
 5. **Tela 5 — Alerta Educativo de Foco**:
    - Caso o aluno tente alternar para um aplicativo não autorizado ou burlar a proteção, o sistema intercepta e exibe uma tela educativa de conscientização, emitindo alerta discreto no painel do professor.
 6. **Tela 6 — Aula Finalizada / Desbloqueio**:
-   - Ao término da aula (por horário ou encerramento pelo professor), o smartphone desativa o Modo Aula e retorna ao estado normal do sistema operacional.
+   - Ao término da aula (por horário ou encerramento pelo professor), o smartphone desativa o OnFocus e retorna ao estado normal do sistema operacional.
 
 ### Segurança do Dispositivo & Kiosk Mode
 
 - **Lock Task Mode / Kiosk Mode**: Fixação da interface pedagógica sem acesso à barra de navegação do sistema.
 - **Accessibility Service / DPM (Device Policy Manager)**: Detecção de troca de janela em primeiro plano para garantir que apenas pacotes autorizados sejam executados.
-- **Assinatura NFC Criptografada**: Impede o uso de tags falsas ou réplicas caseiras através de tokens de sessão temporários.
+- **Assinatura de QR Code Criptografada**: Impede o uso de códigos falsos ou gerados fora da plataforma através de tokens de sessão temporários.
 
 ---
 
 ## 📊 3. Pasta Apresentação
 
-Localizada no diretório [`/apresentação`](file:///Users/beniprado/Desktop/plataforma/apresentação), esta pasta é reservada para:
+Localizada no diretório `/apresentação`, esta pasta é reservada para:
 - Slides e pitch deck do projeto.
 - Roteiro de demonstração ao vivo para a banca avaliadora.
 - Documentos visuais e materiais de apoio do Hackathon.
@@ -175,11 +175,11 @@ Localizada no diretório [`/apresentação`](file:///Users/beniprado/Desktop/pla
 
 ## 🔄 Fluxo de Funcionamento Integrado
 
-```
+```text
 [Início da Aula]
        │
        ▼
-[Aluno aproxima do NFC] ───► [Validação Criptográfica]
+[Aluno escaneia o QR Code] ───► [Validação Criptográfica]
                                       │
                                       ▼
                         [Sincroniza com o Painel do Gestor]
@@ -213,7 +213,7 @@ O projeto foi concebido sob o princípio de **Privacy by Design**:
 - ❌ **Sem monitoramento invasivo**: O sistema **não** captura mensagens, fotos, histórico de navegação pessoal nem conversas privadas.
 - 🔍 **Detecção apenas de Primeiro Plano**: Apenas o identificador do pacote (*Package Name*) em execução durante o horário da aula é verificado para autorização.
 - 🔐 **Logs Imutáveis & Auditoria**: Registro transparente de eventos de entrada e saída, permitindo auditoria escolar em conformidade com as diretrizes da LGPD (Lei Geral de Proteção de Dados).
-- 🔑 **Criptografia ECDSA**: Comunicação assinada com chaves assimétricas para garantir a integridade dos dados transmitidos entre as Tags NFC, os dispositivos móveis e o servidor.
+- 🔑 **Criptografia ECDSA**: Comunicação assinada com chaves assimétricas para garantir a integridade e autenticidade dos dados validados a partir dos QR Codes.
 
 ---
 
@@ -242,7 +242,7 @@ npm run dev
 ```
 
 Abra seu navegador e acesse:
-```
+```text
 http://localhost:3000
 ```
 
