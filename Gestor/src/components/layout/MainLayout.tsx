@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import { Toast } from "@/components/ui/Toast";
-import { StudentSimulatorModal } from "@/components/simulator/StudentSimulatorModal";
 import Link from "next/link";
 import { X } from "lucide-react";
 
@@ -63,7 +62,6 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
       </div>
 
       <Toast />
-      <StudentSimulatorModal />
     </div>
   );
 };

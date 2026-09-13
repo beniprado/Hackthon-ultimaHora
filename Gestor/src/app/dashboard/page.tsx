@@ -18,8 +18,7 @@ import {
   Grid, 
   ArrowUpRight,
   TrendingUp,
-  ShieldCheck,
-  Smartphone
+  ShieldCheck
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import { StatCard } from "@/components/ui/StatCard";
@@ -27,7 +26,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Modal } from "@/components/ui/Modal";
 
 export default function DashboardPage() {
-  const { aulas, turmas, salas, finishAula, setIsSimulatorModalOpen } = useApp();
+  const { aulas, turmas, salas, finishAula } = useApp();
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   const [selectedActionMenu, setSelectedActionMenu] = useState<string | null>(null);
 

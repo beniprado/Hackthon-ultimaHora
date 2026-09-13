@@ -8,20 +8,19 @@ import {
   Bell, 
   Menu, 
   ChevronDown, 
-  Smartphone, 
   Shield, 
   UserCheck, 
-  LogOut,
-  AlertTriangle,
-  CheckCircle,
-  X
+  LogOut, 
+  AlertTriangle, 
+  CheckCircle, 
+  X 
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import { UserRole } from "@/types";
 
 export const Header: React.FC<{ onToggleMobileMenu: () => void }> = ({ onToggleMobileMenu }) => {
   const pathname = usePathname();
-  const { currentUser, setUserRole, alertas, dismissAlerta, setIsSimulatorModalOpen } = useApp();
+  const { currentUser, setUserRole, alertas, dismissAlerta } = useApp();
   
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isAlertsOpen, setIsAlertsOpen] = useState(false);
@@ -52,7 +51,6 @@ export const Header: React.FC<{ onToggleMobileMenu: () => void }> = ({ onToggleM
     if (pathname.includes("/aplicativos")) return "Aplicativos";
     if (pathname.includes("/relatorios")) return "Relatórios";
     if (pathname.includes("/configuracoes")) return "Configurações";
-    if (pathname.includes("/simulador-aluno")) return "Simulador Mobile Aluno";
     return "Visão Geral";
   };
 
@@ -78,7 +76,7 @@ export const Header: React.FC<{ onToggleMobileMenu: () => void }> = ({ onToggleM
         </div>
       </div>
 
-      {/* Right: Search, Live Simulator Button, Notifications, User Profile */}
+      {/* Right: Search, Notifications, User Profile */}
       <div className="flex items-center gap-3 md:gap-4">
         {/* Global Search Input */}
         <div className="relative hidden md:block w-64 lg:w-80">
@@ -91,16 +89,6 @@ export const Header: React.FC<{ onToggleMobileMenu: () => void }> = ({ onToggleM
             className="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1683D8]/20 focus:border-[#1683D8] transition-all"
           />
         </div>
-
-        {/* Mobile Device Simulator Trigger */}
-        <button
-          onClick={() => setIsSimulatorModalOpen(true)}
-          className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-50 text-[#1683D8] border border-blue-200 hover:bg-blue-100 transition-colors shadow-sm"
-          title="Ver o aplicativo Android do aluno em tempo real"
-        >
-          <Smartphone className="w-4 h-4" />
-          <span>Simulador Aluno (PDF)</span>
-        </button>
 
         {/* Notifications Popover */}
         <div className="relative" ref={alertsRef}>

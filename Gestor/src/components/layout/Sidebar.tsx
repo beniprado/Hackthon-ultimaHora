@@ -12,10 +12,8 @@ import {
   Grid,
   BarChart3,
   Settings,
-  Smartphone,
   ShieldCheck
 } from "lucide-react";
-import { useApp } from "@/context/AppContext";
 
 export const navigationItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -29,7 +27,6 @@ export const navigationItems = [
 
 export const Sidebar: React.FC<{ onCloseMobile?: () => void }> = ({ onCloseMobile }) => {
   const pathname = usePathname();
-  const { setIsSimulatorModalOpen } = useApp();
 
   return (
     <aside className="w-64 bg-white border-r border-slate-200/80 h-full flex flex-col justify-between shrink-0 select-none">
@@ -77,22 +74,6 @@ export const Sidebar: React.FC<{ onCloseMobile?: () => void }> = ({ onCloseMobil
           })}
         </nav>
 
-        {/* Student Mobile Simulation Quick Trigger */}
-        <div className="px-3 pt-2">
-          <button
-            onClick={() => {
-              setIsSimulatorModalOpen(true);
-              if (onCloseMobile) onCloseMobile();
-            }}
-            className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/70 text-[#1683D8] hover:bg-blue-100/50 transition-all shadow-sm"
-          >
-            <Smartphone className="w-4 h-4 stroke-[2] text-[#1683D8]" />
-            <span className="font-semibold">Simulador Aluno</span>
-            <span className="ml-auto text-[10px] uppercase font-bold bg-[#1683D8] text-white px-1.5 py-0.5 rounded">
-              PDF
-            </span>
-          </button>
-        </div>
       </div>
 
       {/* Footer info */}

@@ -23,16 +23,6 @@ import {
   mockLogs 
 } from "@/lib/mockData";
 
-export interface StudentSimulatorState {
-  currentScreen: 1 | 2 | 3 | 4 | 5 | 6; // 1: Standby, 2: NFC Scan, 3: Active Launcher, 4: GeoGebra, 5: Restricted Block, 6: Finished
-  isNfcTapped: boolean;
-  activeAppId: string | null;
-  batteryLevel: number;
-  wifiConnected: boolean;
-  selectedSalaId: string;
-  selectedTurmaId: string;
-}
-
 interface AppContextType {
   currentUser: User;
   setCurrentUser: (user: User) => void;
@@ -72,12 +62,6 @@ interface AppContextType {
   dismissAlerta: (id: string) => void;
   triggerSimulatedAlert: (tipo: "Bateria Crítica" | "Inatividade Detectada" | "Tentativa de App Restrito", alunoNome: string) => void;
   
-  // Simulator State
-  simulatorState: StudentSimulatorState;
-  setSimulatorState: React.Dispatch<React.SetStateAction<StudentSimulatorState>>;
-  isSimulatorModalOpen: boolean;
-  setIsSimulatorModalOpen: (open: boolean) => void;
-  
   // Toast notifications
   toastMessage: string | null;
   showToast: (msg: string) => void;
@@ -95,18 +79,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [alertas, setAlertas] = useState<AlertaAtividade[]>(mockAlertas);
   const [logs, setLogs] = useState<LogEvento[]>(mockLogs);
   
-  const [isSimulatorModalOpen, setIsSimulatorModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const [simulatorState, setSimulatorState] = useState<StudentSimulatorState>({
-    currentScreen: 3, // Defaults to Active Launcher for immediate demonstration
-    isNfcTapped: true,
-    activeAppId: "app-geogebra",
-    batteryLevel: 85,
-    wifiConnected: true,
-    selectedSalaId: "sala-101",
-    selectedTurmaId: "turma-1"
-  });
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -192,8 +165,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setSalas(prev => prev.map(s => s.id === aula.salaId ? { ...s, status: "Disponível", aulaAtualId: undefined } : s));
       addLog("CLASS_FINISHED", "Aula encerrada com sucesso. Restauração dos dispositivos acionada.", aula.sala);
       showToast("Aula encerrada. Dispositivos liberados para uso normal.");
-      // If student simulator is currently active, transition to Screen 6
-      setSimulatorState(prev => ({ ...prev, currentScreen: 6 }));
     }
   };
 
@@ -299,10 +270,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       activateNfcTag,
       dismissAlerta,
       triggerSimulatedAlert,
-      simulatorState,
-      setSimulatorState,
-      isSimulatorModalOpen,
-      setIsSimulatorModalOpen,
       toastMessage,
       showToast
     }}>

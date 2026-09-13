@@ -27,7 +27,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Modal } from "@/components/ui/Modal";
 
 export default function SalaStatusPage({ params }: { params?: { id?: string } }) {
-  const { salas, aulas, dispositivos, alertas, finishAula, showToast, setIsSimulatorModalOpen } = useApp();
+  const { salas, aulas, dispositivos, alertas, finishAula, showToast } = useApp();
   
   const salaId = params?.id || "sala-101";
   const sala = salas.find(s => s.id === salaId) || salas[0];

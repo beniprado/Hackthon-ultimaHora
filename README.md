@@ -101,8 +101,6 @@ Localizado no diretório [`/Gestor`](file:///Users/beniprado/Desktop/plataforma/
 - ⚙️ **Configurações, Segurança & LGPD**:
   - Gerenciamento de chaves criptográficas para Tags NFC (ECDSA P-256).
   - Logs de auditoria imutáveis com minimização de dados.
-- 📱 **Simulador Integrado do Smartphone do Aluno**:
-  - Espelhamento interativo em tempo real do comportamento do aplicativo mobile dentro do próprio dashboard web.
 
 ### Tecnologias do Gestor
 
@@ -119,7 +117,7 @@ Localizado no diretório [`/Gestor`](file:///Users/beniprado/Desktop/plataforma/
 
 ## 📱 2. Módulo App Mobile (Dispositivo do Aluno)
 
-Localizado no diretório [`/AppMobile`](file:///Users/beniprado/Desktop/plataforma/AppMobile) e espelhado interativamente no simulador do Gestor, o **App Mobile** é o cliente responsável pela aplicação das restrições e entrega da interface pedagógica.
+Localizado no diretório [`/AppMobile`](file:///Users/beniprado/Desktop/plataforma/AppMobile), o **App Mobile** é o cliente Android/React Native responsável pela aplicação das restrições e entrega da interface pedagógica no smartphone do estudante.
 
 ### O Ciclo do Aluno em 6 Etapas
 
@@ -211,11 +209,9 @@ plataforma/
 │       │   ├── salas/             # Monitoramento de salas e dispositivos
 │       │   ├── aplicativos/       # Catálogo e whitelist de pacotes
 │       │   ├── relatorios/        # Relatórios de frequência e uso
-│       │   ├── configuracoes/     # Configurações de segurança e LGPD
-│       │   └── simulador-aluno/   # Página dedicada ao simulador mobile
+│       │   └── configuracoes/     # Configurações de segurança e LGPD
 │       ├── components/            # Componentes reutilizáveis
 │       │   ├── layout/            # Sidebar, Header e Shell da aplicação
-│       │   ├── simulator/         # Simulador completo do Smartphone do Aluno
 │       │   └── ui/                # Componentes de interface (Cards, Modais, Tabelas)
 │       ├── context/               # Estado global da aplicação (AppContext)
 │       ├── types/                 # Definições de tipos TypeScript
@@ -238,7 +234,7 @@ git clone git@github.com:beniprado/Hackthon-ultimaHora.git
 cd Hackthon-ultimaHora
 ```
 
-### 2. Executando o Módulo Gestor (Web SaaS + Simulador Mobile)
+### 2. Executando o Módulo Gestor (Web SaaS)
 ```bash
 # Entre na pasta do Gestor
 cd Gestor
@@ -257,7 +253,6 @@ http://localhost:3000
 
 > 💡 **Dica de Navegação:**
 > - Acesse `/dashboard` para ver a visão geral pedagógica e de dispositivos.
-> - Clique no botão **"Simulador do Aluno"** no cabeçalho ou navegue até `/simulador-aluno` para testar as 6 telas interativas do smartphone do aluno.
 > - Acesse `/salas` para acompanhar a telemetria em tempo real dos dispositivos conectados.
 
 ---
