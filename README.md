@@ -1,6 +1,6 @@
 # 🎓🔒 Modo Aula — Plataforma Integrada de Gestão & Foco Pedagógico Digital
 
-> **Solução completa desenvolvida para o Hackathon Última Hora:** Transformação temporária e segura do smartphone do aluno em uma ferramenta pedagógica ativa via aproximação NFC, sem vigilância invasiva e com total conformidade à LGPD.
+> **Solução desenvolvida para o Hackathon Última Hora:** Transformação temporária e segura do smartphone do aluno em uma ferramenta pedagógica ativa via aproximação NFC, sem vigilância invasiva e com total conformidade à LGPD.
 
 ---
 
@@ -8,17 +8,16 @@
 
 - [📌 Visão Geral da Solução](#-visão-geral-da-solução)
 - [🏗️ Arquitetura do Sistema](#️-arquitetura-do-sistema)
+- [📂 Estrutura de Pastas do Projeto](#-estrutura-de-pastas-do-projeto)
 - [🖥️ 1. Módulo Gestor (Web SaaS)](#️-1-módulo-gestor-web-saas)
   - [Funcionalidades Principais](#funcionalidades-principais-do-gestor)
-  - [Telas e Módulos](#telas-e-módulos-da-plataforma-web)
   - [Tecnologias do Gestor](#tecnologias-do-gestor)
 - [📱 2. Módulo App Mobile (Dispositivo do Aluno)](#-2-módulo-app-mobile-dispositivo-do-aluno)
   - [O Ciclo do Aluno em 6 Etapas](#o-ciclo-do-aluno-em-6-etapas)
   - [Segurança do Dispositivo & Kiosk Mode](#segurança-do-dispositivo--kiosk-mode)
-  - [Tecnologias do App Mobile](#tecnologias-do-app-mobile)
+- [📊 3. Pasta Apresentação](#-3-pasta-apresentação)
 - [🔄 Fluxo de Funcionamento Integrado](#-fluxo-de-funcionamento-integrado)
 - [🛡️ Privacidade, Segurança & LGPD](#️-privacidade-segurança--lgpd)
-- [📂 Estrutura do Repositório](#-estrutura-do-repositório)
 - [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
 - [👥 Hackathon & Equipe](#-hackathon--equipe)
 
@@ -72,6 +71,27 @@ graph TD
 
 ---
 
+## 📂 Estrutura de Pastas do Projeto
+
+O repositório principal (`plataforma/`) é organizado em **3 pastas principais**:
+
+```bash
+plataforma/
+├── README.md                      # Documentação geral do projeto
+├── Gestor/                        # Painel Web SaaS (Next.js 14, TypeScript, Tailwind)
+│   ├── package.json               # Dependências e scripts do Gestor
+│   ├── tsconfig.json              # Configurações TypeScript
+│   ├── tailwind.config.js         # Configurações de estilos Tailwind
+│   ├── next.config.js             # Configurações do Next.js
+│   ├── public/                    # Arquivos estáticos e ícones
+│   └── src/                       # Código-fonte (App Router, Componentes, Estado)
+├── AppMobile/                     # Aplicativo Mobile do Aluno
+│   └── app.jsx                    # Entrypoint e componentes da aplicação mobile
+└── apresentação/                  # Materiais, slides e assets da apresentação do Hackathon
+```
+
+---
+
 ## 🖥️ 1. Módulo Gestor (Web SaaS)
 
 Localizado no diretório [`/Gestor`](file:///Users/beniprado/Desktop/plataforma/Gestor), o **Gestor** é uma aplicação web moderna voltada para coordenadores pedagógicos, diretores e professores.
@@ -80,7 +100,7 @@ Localizado no diretório [`/Gestor`](file:///Users/beniprado/Desktop/plataforma/
 
 - 📊 **Dashboard Dinâmico**:
   - Indicadores em tempo real (turmas ativas, alunos conectados, salas ocupadas, aulas do dia).
-  - Gráfico de distribuição de uso de aplicativos educativos.
+  - Gráficos de distribuição e uso de aplicativos educativos.
   - Painel de status rápido e atalhos operacionais.
 - 👥 **Gerenciamento de Turmas & Alunos**:
   - Cadastro, listagem com paginação e busca por nome/disciplina/status.
@@ -144,6 +164,15 @@ Localizado no diretório [`/AppMobile`](file:///Users/beniprado/Desktop/platafor
 
 ---
 
+## 📊 3. Pasta Apresentação
+
+Localizada no diretório [`/apresentação`](file:///Users/beniprado/Desktop/plataforma/apresentação), esta pasta é reservada para:
+- Slides e pitch deck do projeto.
+- Roteiro de demonstração ao vivo para a banca avaliadora.
+- Documentos visuais e materiais de apoio do Hackathon.
+
+---
+
 ## 🔄 Fluxo de Funcionamento Integrado
 
 ```
@@ -188,40 +217,6 @@ O projeto foi concebido sob o princípio de **Privacy by Design**:
 
 ---
 
-## 📂 Estrutura do Repositório
-
-```bash
-plataforma/
-├── README.md                      # Documentação integrada do projeto (este arquivo)
-├── Gestor/                        # Aplicação Web (Next.js 14 SaaS)
-│   ├── package.json               # Dependências e scripts do Gestor
-│   ├── tsconfig.json              # Configurações TypeScript
-│   ├── tailwind.config.js         # Configurações de estilos Tailwind
-│   ├── next.config.js             # Configurações do Next.js
-│   ├── public/                    # Arquivos estáticos e ícones
-│   └── src/
-│       ├── app/                   # App Router (páginas da plataforma)
-│       │   ├── page.tsx           # Redirecionamento / Rota raiz
-│       │   ├── login/             # Autenticação de gestores/professores
-│       │   ├── dashboard/         # Dashboard principal com métricas em tempo real
-│       │   ├── turmas/            # Gestão e exportação de turmas
-│       │   ├── aulas/             # Configuração de aulas e horários
-│       │   ├── salas/             # Monitoramento de salas e dispositivos
-│       │   ├── aplicativos/       # Catálogo e whitelist de pacotes
-│       │   ├── relatorios/        # Relatórios de frequência e uso
-│       │   └── configuracoes/     # Configurações de segurança e LGPD
-│       ├── components/            # Componentes reutilizáveis
-│       │   ├── layout/            # Sidebar, Header e Shell da aplicação
-│       │   └── ui/                # Componentes de interface (Cards, Modais, Tabelas)
-│       ├── context/               # Estado global da aplicação (AppContext)
-│       ├── types/                 # Definições de tipos TypeScript
-│       └── lib/                   # Utilitários e helpers
-└── AppMobile/                     # Módulo do Aplicativo Mobile do Aluno
-    └── app.jsx                    # Componente / Entrypoint da aplicação mobile
-```
-
----
-
 ## 🚀 Como Executar o Projeto
 
 ### Pré-requisitos
@@ -234,7 +229,7 @@ git clone git@github.com:beniprado/Hackthon-ultimaHora.git
 cd Hackthon-ultimaHora
 ```
 
-### 2. Executando o Módulo Gestor (Web SaaS)
+### 2. Executando o Painel do Gestor (Web SaaS)
 ```bash
 # Entre na pasta do Gestor
 cd Gestor
