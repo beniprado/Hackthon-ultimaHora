@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Modo Aula — Gestão Escolar Inteligente e Dispositivos Seguros",
-  description: "Plataforma de gestão escolar que transforma temporariamente o smartphone do aluno em um dispositivo seguro para uso pedagógico durante as aulas.",
+  title: "OnFocus — Plataforma de Foco Pedagógico Digital & Gestão Escolar",
+  description: "Transformação temporária e segura do smartphone do aluno em ferramenta pedagógica ativa via QR Code assinado, sem vigilância invasiva e em conformidade com a LGPD.",
 };
 
 export default function RootLayout({
@@ -12,9 +12,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body className="bg-[#F8FAFC] text-slate-900 min-h-screen antialiased">
-        {children}
+    <html lang="pt-BR" className="dark">
+      <body className="bg-zinc-950 text-zinc-100 min-h-screen antialiased">
+        <AppProvider>
+          <MainLayout>
+            {children}
+          </MainLayout>
+        </AppProvider>
       </body>
     </html>
   );

@@ -7,23 +7,8 @@ import {
   Plus, 
   Upload, 
   Search, 
-  Filter, 
-  CheckCircle2, 
-  Clock, 
   Trash2, 
-  Edit, 
-  MoreHorizontal, 
-  Calculator, 
-  FileText, 
-  Folder, 
-  Globe, 
-  Languages, 
-  Atom, 
-  FlaskConical, 
-  BookOpen, 
-  ShieldCheck, 
-  Check, 
-  AlertCircle 
+  MoreHorizontal
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import { StatusBadge } from "@/components/ui/StatusBadge";
@@ -93,11 +78,11 @@ export default function AplicativosPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header matching PDF Page 10 */}
+      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Biblioteca de Aplicativos</h1>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <h1 className="text-xl sm:text-2xl font-bold text-zinc-100 tracking-tight">Biblioteca de Aplicativos</h1>
+          <p className="text-xs sm:text-sm text-zinc-400 mt-1">
             Gerencie o catálogo de aplicativos permitidos nas turmas e dispositivos.
           </p>
         </div>
@@ -105,15 +90,15 @@ export default function AplicativosPage() {
         <div className="flex items-center gap-2.5 self-start sm:self-auto">
           <button
             onClick={() => setIsImportCsvModalOpen(true)}
-            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-sm transition-all"
+            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-zinc-200 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-lg shadow-sm transition-all"
           >
-            <Upload className="w-4 h-4 text-slate-500" />
+            <Upload className="w-4 h-4 text-zinc-400" />
             <span>Importar CSV</span>
           </button>
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-[#1683D8] hover:bg-blue-600 rounded-lg shadow-sm shadow-blue-500/20 transition-all"
+            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-white bg-violet-600 hover:bg-violet-500 rounded-lg shadow-md shadow-violet-600/20 border border-violet-500/30 transition-all active:scale-95"
           >
             <Plus className="w-4 h-4 stroke-[2.5]" />
             <span>+ Adicionar aplicativo</span>
@@ -121,21 +106,21 @@ export default function AplicativosPage() {
         </div>
       </div>
 
-      {/* Main Catalog Card matching PDF Page 10 */}
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden">
+      {/* Main Catalog Card */}
+      <div className="bg-zinc-900/90 border border-zinc-800/80 rounded-xl shadow-lg overflow-hidden backdrop-blur-md">
         
         {/* Top Controls */}
-        <div className="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-5 border-b border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           
           {/* Search Input */}
           <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Buscar por nome ou package name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1683D8]/20 focus:border-[#1683D8]"
+              className="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-950/80 border border-zinc-800 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-violet-500 rounded-lg"
             />
           </div>
 
@@ -144,7 +129,7 @@ export default function AplicativosPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="py-1.5 px-3 text-xs bg-white border border-slate-200 rounded-lg text-slate-700 font-medium focus:outline-none"
+              className="py-1.5 px-3 text-xs bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-200 font-medium focus:outline-none focus:border-violet-500"
             >
               <option value="TODOS">Todos os status</option>
               <option value="Ativo">Ativo</option>
@@ -152,18 +137,18 @@ export default function AplicativosPage() {
               <option value="Inativo">Inativo</option>
             </select>
 
-            {/* View Mode Switcher matching PDF Page 10 */}
-            <div className="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200">
+            {/* View Mode Switcher */}
+            <div className="flex items-center bg-zinc-950/80 p-1 rounded-lg border border-zinc-800">
               <button
                 onClick={() => setViewMode("list")}
-                className={"p-1 rounded " + (viewMode === "list" ? "bg-white text-[#1683D8] shadow-sm" : "text-slate-500 hover:text-slate-800")}
+                className={"p-1 rounded transition-colors " + (viewMode === "list" ? "bg-zinc-800 text-violet-400 shadow-sm" : "text-zinc-500 hover:text-zinc-300")}
                 title="Visualização em Lista"
               >
                 <List className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setViewMode("grid")}
-                className={"p-1 rounded " + (viewMode === "grid" ? "bg-white text-[#1683D8] shadow-sm" : "text-slate-500 hover:text-slate-800")}
+                className={"p-1 rounded transition-colors " + (viewMode === "grid" ? "bg-zinc-800 text-violet-400 shadow-sm" : "text-zinc-500 hover:text-zinc-300")}
                 title="Visualização em Grade"
               >
                 <Grid className="w-4 h-4" />
@@ -172,12 +157,12 @@ export default function AplicativosPage() {
           </div>
         </div>
 
-        {/* LIST VIEW (Table matching PDF Page 10) */}
+        {/* LIST VIEW */}
         {viewMode === "list" ? (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-100 text-[11px] font-semibold text-slate-400 uppercase tracking-wider bg-slate-50/50">
+                <tr className="border-b border-zinc-800/80 text-[11px] font-semibold text-zinc-400 uppercase tracking-wider bg-zinc-950/60">
                   <th className="py-3.5 px-5">Nome do App</th>
                   <th className="py-3.5 px-5">Package Name</th>
                   <th className="py-3.5 px-5">Versão</th>
@@ -186,27 +171,27 @@ export default function AplicativosPage() {
                   <th className="py-3.5 px-5 text-right">Ações</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs">
+              <tbody className="divide-y divide-zinc-800/50 text-xs">
                 {filteredApps.map((app) => (
-                  <tr key={app.id} className="hover:bg-slate-50/60 transition-colors">
+                  <tr key={app.id} className="hover:bg-zinc-800/40 transition-colors">
                     <td className="py-4 px-5">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-xs">
+                        <div className="w-8 h-8 rounded-lg bg-violet-950/80 border border-violet-800/60 text-violet-400 flex items-center justify-center font-bold text-xs">
                           {app.nome.substring(0, 2).toUpperCase()}
                         </div>
                         <div>
-                          <p className="font-bold text-slate-900">{app.nome}</p>
-                          <p className="text-slate-400 text-[11px]">{app.subtitulo}</p>
+                          <p className="font-bold text-zinc-100">{app.nome}</p>
+                          <p className="text-zinc-400 text-[11px]">{app.subtitulo}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="py-4 px-5 font-mono text-[11px] text-slate-600">
+                    <td className="py-4 px-5 font-mono text-[11px] text-zinc-300">
                       {app.packageName}
                     </td>
-                    <td className="py-4 px-5 font-mono text-[11px] text-slate-500">
+                    <td className="py-4 px-5 font-mono text-[11px] text-zinc-400">
                       {app.versao}
                     </td>
-                    <td className="py-4 px-5 text-slate-500 text-[11px]">
+                    <td className="py-4 px-5 text-zinc-400 text-[11px]">
                       {app.ultimaAtualizacao}
                     </td>
                     <td className="py-4 px-5">
@@ -218,19 +203,19 @@ export default function AplicativosPage() {
                       <div className="relative inline-block text-left">
                         <button
                           onClick={() => setSelectedAppMenu(selectedAppMenu === app.id ? null : app.id)}
-                          className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg"
+                          className="p-1.5 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 rounded-lg transition-colors"
                         >
                           <MoreHorizontal className="w-4 h-4" />
                         </button>
 
                         {selectedAppMenu === app.id && (
-                          <div className="absolute right-0 mt-1 w-40 bg-white border border-slate-200 rounded-lg shadow-lg z-20 py-1 text-left">
+                          <div className="absolute right-0 mt-1 w-40 bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl shadow-black/80 z-20 py-1 text-left">
                             <button
                               onClick={() => {
                                 toggleAppStatus(app.id);
                                 setSelectedAppMenu(null);
                               }}
-                              className="w-full text-left px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50"
+                              className="w-full text-left px-3 py-1.5 text-xs text-zinc-200 hover:bg-zinc-800 transition-colors"
                             >
                               Alternar Status
                             </button>
@@ -239,7 +224,7 @@ export default function AplicativosPage() {
                                 deleteAplicativo(app.id);
                                 setSelectedAppMenu(null);
                               }}
-                              className="w-full text-left px-3 py-1.5 text-xs text-rose-600 hover:bg-rose-50 flex items-center gap-1.5"
+                              className="w-full text-left px-3 py-1.5 text-xs text-rose-400 hover:bg-rose-950/30 flex items-center gap-1.5 transition-colors"
                             >
                               <Trash2 className="w-3 h-3" />
                               <span>Remover</span>
@@ -257,21 +242,21 @@ export default function AplicativosPage() {
           /* GRID VIEW */
           <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredApps.map((app) => (
-              <div key={app.id} className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:border-[#1683D8] transition-all flex flex-col justify-between">
+              <div key={app.id} className="p-4 rounded-xl border border-zinc-800 bg-zinc-950/60 hover:border-violet-500/60 transition-all flex flex-col justify-between">
                 <div>
                   <div className="flex items-start justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#1683D8] flex items-center justify-center font-bold text-sm">
+                    <div className="w-10 h-10 rounded-xl bg-violet-950/80 border border-violet-800/60 text-violet-400 flex items-center justify-center font-bold text-sm">
                       {app.nome.substring(0, 2).toUpperCase()}
                     </div>
                     <StatusBadge status={app.status} size="sm" />
                   </div>
-                  <h3 className="font-bold text-slate-900 text-sm mt-3">{app.nome}</h3>
-                  <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">{app.subtitulo}</p>
-                  <p className="font-mono text-[10px] text-slate-400 mt-2 truncate bg-white p-1 rounded border border-slate-200">
+                  <h3 className="font-bold text-zinc-100 text-sm mt-3">{app.nome}</h3>
+                  <p className="text-[11px] text-zinc-400 mt-0.5 leading-relaxed">{app.subtitulo}</p>
+                  <p className="font-mono text-[10px] text-zinc-300 mt-2 truncate bg-zinc-900 p-1.5 rounded border border-zinc-800">
                     {app.packageName}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-400 font-medium">
+                <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[11px] text-zinc-400 font-medium">
                   <span>v{app.versao}</span>
                   <span>{app.categoria}</span>
                 </div>
@@ -280,17 +265,17 @@ export default function AplicativosPage() {
           </div>
         )}
 
-        {/* Pagination matching PDF Page 10 */}
-        <div className="p-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+        {/* Pagination */}
+        <div className="p-4 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-400 gap-3 bg-zinc-950/40">
           <p>Mostrando {filteredApps.length} de {aplicativos.length} aplicativos cadastrados</p>
           <div className="flex items-center gap-1.5">
-            <button className="px-3 py-1.5 border border-slate-200 rounded-lg hover:bg-slate-50 disabled:opacity-50" disabled>
+            <button className="px-3 py-1.5 border border-zinc-800 bg-zinc-900 text-zinc-500 rounded-lg disabled:opacity-50" disabled>
               Anterior
             </button>
-            <button className="px-3 py-1.5 bg-[#1683D8] text-white font-bold rounded-lg">
+            <button className="px-3 py-1.5 bg-violet-600 text-white font-bold rounded-lg shadow-sm">
               1
             </button>
-            <button className="px-3 py-1.5 border border-slate-200 rounded-lg hover:bg-slate-50 disabled:opacity-50" disabled>
+            <button className="px-3 py-1.5 border border-zinc-800 bg-zinc-900 text-zinc-500 rounded-lg disabled:opacity-50" disabled>
               Próxima
             </button>
           </div>
@@ -307,19 +292,19 @@ export default function AplicativosPage() {
       >
         <form onSubmit={handleCreateApp} className="space-y-4 text-xs">
           <div>
-            <label className="block font-bold text-slate-700 mb-1">Nome do Aplicativo</label>
+            <label className="block font-bold text-zinc-200 mb-1">Nome do Aplicativo</label>
             <input
               type="text"
               placeholder="Ex: GeoGebra 3D"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               required
-              className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1683D8]/20 focus:border-[#1683D8]"
+              className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-violet-500"
             />
           </div>
 
           <div>
-            <label className="block font-bold text-slate-700 mb-1">
+            <label className="block font-bold text-zinc-200 mb-1">
               Package Name Android (Validação obrigatória)
             </label>
             <input
@@ -328,42 +313,42 @@ export default function AplicativosPage() {
               value={packageName}
               onChange={(e) => setPackageName(e.target.value)}
               required
-              className="w-full p-2.5 font-mono bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1683D8]/20 focus:border-[#1683D8]"
+              className="w-full p-2.5 font-mono bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-violet-500"
             />
-            <p className="text-[10px] text-slate-400 mt-1">
+            <p className="text-[10px] text-zinc-400 mt-1">
               O identificador único utilizado pelo Android SDK e DevicePolicyManager.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Subtítulo / Descrição Curta</label>
+              <label className="block font-bold text-zinc-200 mb-1">Subtítulo / Descrição Curta</label>
               <input
                 type="text"
                 placeholder="Ex: Calculadora Gráfica"
                 value={subtitulo}
                 onChange={(e) => setSubtitulo(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none"
+                className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-violet-500"
               />
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Versão</label>
+              <label className="block font-bold text-zinc-200 mb-1">Versão</label>
               <input
                 type="text"
                 value={versao}
                 onChange={(e) => setVersao(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg font-mono focus:outline-none"
+                className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-100 font-mono focus:outline-none focus:border-violet-500"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Categoria Pedagógica</label>
+              <label className="block font-bold text-zinc-200 mb-1">Categoria Pedagógica</label>
               <select
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value as AppCategory)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none"
+                className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-100 focus:outline-none focus:border-violet-500"
               >
                 <option value="Matemática">Matemática</option>
                 <option value="Línguas">Línguas</option>
@@ -374,11 +359,11 @@ export default function AplicativosPage() {
               </select>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Status</label>
+              <label className="block font-bold text-zinc-200 mb-1">Status</label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as AppStatus)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none"
+                className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-100 focus:outline-none focus:border-violet-500"
               >
                 <option value="Ativo">Ativo</option>
                 <option value="Pendente">Pendente</option>
@@ -387,17 +372,17 @@ export default function AplicativosPage() {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-100 flex items-center justify-end gap-2">
+          <div className="pt-4 border-t border-zinc-800 flex items-center justify-end gap-2">
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg font-medium"
+              className="px-4 py-2 text-zinc-300 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-lg font-medium transition-colors"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-[#1683D8] hover:bg-blue-600 text-white font-bold rounded-lg shadow-sm"
+              className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white font-bold rounded-lg shadow-md shadow-violet-600/20 border border-violet-500/30 transition-colors"
             >
               Cadastrar Aplicativo
             </button>
@@ -413,16 +398,16 @@ export default function AplicativosPage() {
         subtitle="Carregue uma planilha com a lista de pacotes educacionais autorizados."
       >
         <div className="space-y-4 text-xs">
-          <div className="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center bg-slate-50 hover:bg-blue-50/30 hover:border-[#1683D8] transition-colors cursor-pointer">
-            <Upload className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-            <p className="font-bold text-slate-800">Clique para selecionar ou arraste o arquivo CSV</p>
-            <p className="text-[11px] text-slate-400 mt-1">Formato: nome, package_name, versao, categoria</p>
+          <div className="border-2 border-dashed border-zinc-700 rounded-xl p-8 text-center bg-zinc-950/60 hover:bg-zinc-900/60 hover:border-violet-500 transition-colors cursor-pointer">
+            <Upload className="w-8 h-8 text-zinc-400 mx-auto mb-2" />
+            <p className="font-bold text-zinc-200">Clique para selecionar ou arraste o arquivo CSV</p>
+            <p className="text-[11px] text-zinc-400 mt-1">Formato: nome, package_name, versao, categoria</p>
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
             <button
               onClick={() => setIsImportCsvModalOpen(false)}
-              className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg font-medium"
+              className="px-4 py-2 text-zinc-300 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-lg font-medium transition-colors"
             >
               Fechar
             </button>
@@ -431,7 +416,7 @@ export default function AplicativosPage() {
                 showToast("3 aplicativos importados do CSV com sucesso!");
                 setIsImportCsvModalOpen(false);
               }}
-              className="px-4 py-2 bg-[#1683D8] text-white font-bold rounded-lg"
+              className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white font-bold rounded-lg shadow-md shadow-violet-600/20 transition-colors"
             >
               Processar Importação
             </button>

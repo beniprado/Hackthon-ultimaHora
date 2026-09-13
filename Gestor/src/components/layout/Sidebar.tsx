@@ -29,16 +29,22 @@ export const Sidebar: React.FC<{ onCloseMobile?: () => void }> = ({ onCloseMobil
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200/80 h-full flex flex-col justify-between shrink-0 select-none">
+    <aside className="w-64 bg-zinc-900/95 backdrop-blur-md border-r border-zinc-800/80 h-full flex flex-col justify-between shrink-0 select-none">
       <div>
-        {/* Logo Section matching PDF */}
-        <div className="h-16 flex items-center px-6 border-b border-slate-100 gap-3">
-          <div className="w-9 h-9 rounded-lg bg-[#1683D8] text-white flex items-center justify-center shadow-sm shadow-blue-500/20">
+        {/* Logo Section */}
+        <div className="h-16 flex items-center px-6 border-b border-zinc-800/80 gap-3">
+          <div className="w-9 h-9 rounded-lg bg-violet-600 text-white flex items-center justify-center shadow-md shadow-violet-600/30">
             <ShieldCheck className="w-5 h-5 stroke-[2.5]" />
           </div>
-          <span className="text-lg font-bold text-slate-900 tracking-tight">
-            Modo Aula
-          </span>
+          <div>
+            <span className="text-lg font-bold text-zinc-100 tracking-tight flex items-center gap-1.5">
+              OnFocus
+              <span className="text-[10px] font-semibold uppercase px-1.5 py-0.2 rounded bg-violet-950 text-violet-300 border border-violet-800/60">
+                PRO
+              </span>
+            </span>
+            <p className="text-[10px] text-zinc-400 font-medium -mt-0.5">Foco & Gestão Pedagógica</p>
+          </div>
         </div>
 
         {/* Navigation Menu */}
@@ -55,33 +61,32 @@ export const Sidebar: React.FC<{ onCloseMobile?: () => void }> = ({ onCloseMobil
                 className={clsx(
                   "flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all group",
                   isActive
-                    ? "bg-blue-50 text-[#1683D8] font-semibold"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                    ? "bg-violet-950/60 text-violet-300 font-semibold border border-violet-800/40 shadow-sm"
+                    : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/60"
                 )}
               >
                 <Icon
                   className={clsx(
                     "w-4 h-4 stroke-[2] transition-colors",
-                    isActive ? "text-[#1683D8]" : "text-slate-400 group-hover:text-slate-600"
+                    isActive ? "text-violet-400" : "text-zinc-400 group-hover:text-zinc-200"
                   )}
                 />
                 <span>{item.name}</span>
                 {isActive && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#1683D8]" />
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(167,139,250,0.8)]" />
                 )}
               </Link>
             );
           })}
         </nav>
-
       </div>
 
       {/* Footer info */}
-      <div className="p-4 border-t border-slate-100">
-        <div className="flex items-center justify-between text-xs text-slate-400 font-medium px-2">
-          <span>Versão 1.2.0</span>
-          <span className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+      <div className="p-4 border-t border-zinc-800/80">
+        <div className="flex items-center justify-between text-xs text-zinc-500 font-medium px-2">
+          <span>v1.2.0 • ECDSA</span>
+          <span className="flex items-center gap-1.5 text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
             Online
           </span>
         </div>
