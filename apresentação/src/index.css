@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-obsidian: #04060b;
+  --cyan-glow: #00f0ff;
+  --blue-brand: #0284c7;
+  --sapphire: #2563eb;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-obsidian);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: #f1f5f9;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Film Grain Texture Overlay (Subtle 1.5% opacity for tactile cinematic depth) */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #04060b;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.5);
+}
+
+/* Typography styles */
+.font-space {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+}
+.font-sans {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Apple-grade Metallic & High-Contrast Typography Gradients */
+.gradient-title-hero {
+  background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 55%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-title-accent {
+  background: linear-gradient(135deg, #ffffff 0%, #67e8f9 45%, #00f0ff 75%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-title-gold {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 45%, #f59e0b 80%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-subtle-glow {
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+}
+
+/* Refined Minimalist Surfaces (No heavy glass clutter) */
+.editorial-card {
+  background: rgba(12, 16, 26, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.editorial-card-interactive {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.editorial-card-interactive:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(18, 24, 38, 0.8);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), 0 0 30px -10px rgba(0, 240, 255, 0.15);
+}
+
+/* Notification Distraction Card Styling */
+.toast-distraction {
+  background: rgba(14, 18, 30, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* Lighting & Radial Reflections */
+.radial-halo-warm {
+  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.09) 0%, rgba(244, 63, 94, 0.04) 45%, transparent 70%);
+}
+
+.radial-halo-cyan {
+  background: radial-gradient(circle at center, rgba(0, 240, 255, 0.12) 0%, rgba(2, 132, 199, 0.06) 45%, transparent 70%);
+}
+
+.radial-halo-blue {
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.12) 0%, rgba(14, 165, 233, 0.05) 50%, transparent 75%);
+}
+
+.radial-halo-gold {
+  background: radial-gradient(circle at center, rgba(251, 191, 36, 0.12) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 70%);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
