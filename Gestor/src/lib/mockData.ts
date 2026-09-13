@@ -1,4 +1,15 @@
-import { Aplicativo, Aula, DispositivoAluno, Sala, Turma, User, LogEvento, AlertaAtividade } from "@/types";
+import { 
+  Aplicativo, 
+  Aula, 
+  DispositivoAluno, 
+  Sala, 
+  Turma, 
+  User, 
+  LogEvento, 
+  AlertaAtividade,
+  BroadcastCommand,
+  DynamicQRCodePayload
+} from "@/types";
 
 export const mockUsers: User[] = [
   {
@@ -651,5 +662,48 @@ export const mockLogs: LogEvento[] = [
     sala: "Sala 101",
     aluno: "Diego Fernandes",
     descricao: "Tentativa de abrir aplicativo restrito bloqueada pelo launcher"
+  },
+  {
+    id: "log-7",
+    timestamp: "08:35:10",
+    tipo: "FOCUS_BROADCAST",
+    sala: "Sala 101",
+    descricao: "Professor disparou comando Focus Broadcast: Iniciar GeoGebra para todos os alunos"
+  },
+  {
+    id: "log-8",
+    timestamp: "08:36:00",
+    tipo: "QR_ROTATED",
+    sala: "Sala 101",
+    descricao: "Token dinâmico ECDSA P-256 renovado com novo nonce criptográfico"
   }
 ];
+
+
+
+export const mockActiveBroadcast: BroadcastCommand = {
+  id: "bcast-1",
+  type: "LAUNCH_APP",
+  title: "Iniciar GeoGebra",
+  payload: {
+    packageName: "org.geogebra.android",
+    appName: "GeoGebra",
+    message: "Abram a atividade de Geometria Analítica na página 42."
+  },
+  timestamp: "08:35",
+  sentBy: "Prof. Ricardo Silva",
+  targetSalaId: "sala-101"
+};
+
+export const mockDynamicQRCode: DynamicQRCodePayload = {
+  version: "onfocus-v1",
+  roomId: "sala-101",
+  roomName: "Sala 101",
+  aulaId: "aula-1",
+  schoolBssidHash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", // SHA-256 of institutional BSSID
+  nonce: "a7f89d02c4b14e9a8f21bc90",
+  timestamp: Math.floor(Date.now() / 1000),
+  ttlSeconds: 60,
+  signature: "MEQCIDz81K9nUfWb7hL0v+3aX1pQ9Y4vjZ8m2L0k1Np3R4sTAiB6q8W9Z1X2y3T4U5V6w7X8y9Z0a1b2c3d4e5f6=="
+};
+

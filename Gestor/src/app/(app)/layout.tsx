@@ -1,0 +1,14 @@
+import { AppProvider } from "@/context/AppContext";
+import { MainLayout } from "@/components/layout/MainLayout";
+
+export default function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <AppProvider>
+      <MainLayout>{children}</MainLayout>
+    </AppProvider>
+  );
+}

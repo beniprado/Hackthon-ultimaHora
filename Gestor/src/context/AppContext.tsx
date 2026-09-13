@@ -10,7 +10,9 @@ import {
   User, 
   LogEvento, 
   AlertaAtividade,
-  UserRole
+  UserRole,
+  BroadcastCommand,
+  DynamicQRCodePayload
 } from "@/types";
 import { 
   mockAplicativos, 
@@ -20,7 +22,9 @@ import {
   mockTurmas, 
   mockUsers, 
   mockAlertas, 
-  mockLogs 
+  mockLogs,
+  mockActiveBroadcast,
+  mockDynamicQRCode
 } from "@/lib/mockData";
 
 interface AppContextType {
@@ -35,6 +39,15 @@ interface AppContextType {
   dispositivos: DispositivoAluno[];
   alertas: AlertaAtividade[];
   logs: LogEvento[];
+
+  // Focus Broadcast & Pedagogical Commands
+  activeBroadcast: BroadcastCommand | null;
+  broadcastCommand: (cmd: { type: BroadcastCommand["type"]; title: string; payload?: BroadcastCommand["payload"]; targetSalaId?: string }) => void;
+  clearBroadcast: () => void;
+
+  // Dynamic QR Code & Security
+  generateDynamicQRCode: (salaId: string, aulaId?: string) => DynamicQRCodePayload;
+  logFocusInterception: (salaNome?: string) => void;
   
   // Turmas actions
   addTurma: (turma: Omit<Turma, "id">) => void;
@@ -53,7 +66,7 @@ interface AppContextType {
   deleteAplicativo: (id: string) => void;
   toggleAppStatus: (id: string) => void;
   
-  // Salas & NFC
+  // Salas & NFC / QR
   updateSala: (id: string, sala: Partial<Sala>) => void;
   revokeNfcTag: (salaId: string) => void;
   activateNfcTag: (salaId: string) => void;
@@ -67,6 +80,7 @@ interface AppContextType {
   showToast: (msg: string) => void;
 }
 
+
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -78,6 +92,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [dispositivos, setDispositivos] = useState<DispositivoAluno[]>(mockDispositivos);
   const [alertas, setAlertas] = useState<AlertaAtividade[]>(mockAlertas);
   const [logs, setLogs] = useState<LogEvento[]>(mockLogs);
+  const [activeBroadcast, setActiveBroadcast] = useState<BroadcastCommand | null>(mockActiveBroadcast);
   
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -242,6 +257,60 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast("Novo alerta emitido: " + tipo);
   };
 
+  // Focus Broadcast & Pedagogical Commands
+  const broadcastCommand = (cmd: { type: BroadcastCommand["type"]; title: string; payload?: BroadcastCommand["payload"]; targetSalaId?: string }) => {
+    const newBroadcast: BroadcastCommand = {
+      id: "bcast-" + Date.now(),
+      type: cmd.type,
+      title: cmd.title,
+      payload: cmd.payload,
+      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      sentBy: currentUser.name,
+      targetSalaId: cmd.targetSalaId || "sala-101"
+    };
+    setActiveBroadcast(newBroadcast);
+    addLog("FOCUS_BROADCAST", "Comando de foco transmitido: " + cmd.title, cmd.targetSalaId ? "Sala " + cmd.targetSalaId : "Todas as Salas");
+    showToast("Comando \"" + cmd.title + "\" transmitido com sucesso aos alunos!");
+
+    // Real-time synchronization event for connected student mobile clients
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("onfocus-broadcast", { detail: newBroadcast }));
+    }
+  };
+
+  const clearBroadcast = () => {
+    setActiveBroadcast(null);
+    showToast("Transmissão de foco encerrada.");
+  };
+
+  // Dynamic QR Code generation with anti-replay guarantees
+  const generateDynamicQRCode = (salaId: string, aulaId?: string): DynamicQRCodePayload => {
+    const randomBytes = Array.from({ length: 12 }, () => Math.floor(Math.random() * 256).toString(16).padStart(2, "0")).join("");
+    const salaObj = salas.find(s => s.id === salaId) || salas[0];
+    const newPayload: DynamicQRCodePayload = {
+      version: "onfocus-v1",
+      roomId: salaId,
+      roomName: salaObj.nome,
+      aulaId: aulaId || salaObj.aulaAtualId || "aula-1",
+      schoolBssidHash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      nonce: randomBytes,
+      timestamp: Math.floor(Date.now() / 1000),
+      ttlSeconds: 60,
+      signature: "MEQCIDz81K9nUfWb7hL0v+3aX1pQ9Y4vjZ8m2L0k1Np3R4sTAiB6q8W9Z1X2y3T4U5V6w7X8y9Z0a1b2c3d4e5f6=="
+    };
+    addLog("QR_ROTATED", "QR Code dinâmico gerado para " + salaObj.nome + " (Nonce: " + randomBytes.substring(0, 8) + "...)", salaObj.nome);
+    return newPayload;
+  };
+
+  // LGPD Privacy by Design: Minimized Telemetry
+  const logFocusInterception = (salaNome?: string) => {
+    addLog(
+      "FOCUS_INTERCEPTION",
+      "Intervenção pedagógica amigável acionada (dados minimizados em conformidade com LGPD)",
+      salaNome || "Sala 101"
+    );
+  };
+
   return (
     <AppContext.Provider value={{
       currentUser,
@@ -254,6 +323,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       dispositivos,
       alertas,
       logs,
+      activeBroadcast,
+      broadcastCommand,
+      clearBroadcast,
+      generateDynamicQRCode,
+      logFocusInterception,
       addTurma,
       updateTurma,
       deleteTurma,

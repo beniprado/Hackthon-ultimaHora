@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AppProvider } from "@/context/AppContext";
-import { MainLayout } from "@/components/layout/MainLayout";
 
 export const metadata: Metadata = {
-  title: "Modo Aula — Gestão Escolar Inteligente e Dispositivos Seguros",
-  description: "Plataforma de gestão escolar que transforma temporariamente o smartphone do aluno em um dispositivo seguro para uso pedagógico durante as aulas.",
+  title: "OnFocus — Plataforma de Foco Pedagógico Digital & Gestão Escolar",
+  description: "Transformação temporária e segura do smartphone do aluno em ferramenta pedagógica ativa via QR Code assinado, sem vigilância invasiva e em conformidade com a LGPD.",
 };
 
 export default function RootLayout({
@@ -14,13 +12,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body className="bg-[#F8FAFC] text-slate-900 min-h-screen">
-        <AppProvider>
-          <MainLayout>
-            {children}
-          </MainLayout>
-        </AppProvider>
+    <html lang="pt-BR" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('onfocus_theme') || 'dark';
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="bg-[#f1f5f9] dark:bg-[#0a0f1e] text-slate-900 dark:text-white min-h-screen antialiased transition-colors duration-200">
+        {children}
       </body>
     </html>
   );

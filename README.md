@@ -153,8 +153,10 @@ Localizado no diretório `/AppMobile`, o **App Mobile** é o cliente Android/Rea
    - O aluno utiliza a ferramenta pedagógica designada (exemplo: **GeoGebra interativo**, calculadora, leitor de PDF).
 5. **Tela 5 — Alerta Educativo de Foco**:
    - Caso o aluno tente alternar para um aplicativo não autorizado ou burlar a proteção, o sistema intercepta e exibe uma tela educativa de conscientização, emitindo alerta discreto no painel do professor.
-6. **Tela 6 — Aula Finalizada / Desbloqueio**:
-   - Ao término da aula (por horário ou encerramento pelo professor), o smartphone desativa o OnFocus e retorna ao estado normal do sistema operacional.
+6. **Tela 6 — Validação de Saída + Aula Finalizada / Desbloqueio**:
+   - Ao tocar em **“Encerrar”**, o aluno valida a saída com uma nova leitura do **QR Code da sala** (com loading simulado).
+   - Confirmada a saída, o smartphone desativa o Modo Aula e retorna ao estado normal do sistema operacional.
+   - O “Retornar ao Início” leva à tela inicial do celular (papel de parede + relógio), provando que o aluno saiu totalmente do app.
 
 ### Segurança do Dispositivo & Kiosk Mode
 
