@@ -54,16 +54,16 @@ export function AppRow({ app, onClick }: { app: { id: string; nome: string; subt
   return (
     <button
       onClick={onClick}
-      className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-50 transition-colors text-left"
+      className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-zinc-50 transition-colors text-left"
     >
-      <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 flex-shrink-0">
+      <div className="w-12 h-12 rounded-lg bg-zinc-100 flex items-center justify-center text-zinc-700 flex-shrink-0">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="font-semibold text-slate-900 truncate">{app.nome}</p>
-        <p className="text-xs text-slate-500 truncate">{app.subtexto}</p>
+        <p className="font-semibold text-zinc-900 truncate">{app.nome}</p>
+        <p className="text-xs text-zinc-500 truncate">{app.subtexto}</p>
       </div>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 18l6-6-6-6" />
       </svg>
     </button>

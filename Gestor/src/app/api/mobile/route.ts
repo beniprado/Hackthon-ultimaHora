@@ -9,7 +9,7 @@ import {
 } from "@/lib/mockData";
 
 /**
- * Endpoint público da plataforma Modo Aula para o App Mobile do aluno.
+ * Endpoint público da plataforma OnFocus para o App Mobile do aluno.
  * Rota: GET /api/mobile
  *
  * Retorna o estado atual da aula ativa, a sala correspondente e a whitelist

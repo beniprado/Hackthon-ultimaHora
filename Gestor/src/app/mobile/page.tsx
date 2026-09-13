@@ -101,21 +101,21 @@ export default function App() {
   };
 
   const handleCancelExit = () => {
-    // Desistiu de sair: volta ao launcher do modo aula.
+    // Desistiu de sair: volta ao launcher do OnFocus.
     setActiveAppId(null);
     setStatus("active");
   };
 
   const handleReturnHome = () => {
     // Saiu totalmente: vai p/ a tela inicial do celular (papel de
-    // parede + relógio), sem nada do Modo Aula.
+    // parede + relógio), sem nada do OnFocus.
     setCheckedIn(false);
     setActiveAppId(null);
     setStatus("home");
     load();
   };
 
-  const handleOpenModoAula = () => {
+  const handleOpenOnFocus = () => {
     // Reabre o app instalado: volta p/ a leitura do QR Code.
     setStatus("standby");
     load();
@@ -123,17 +123,17 @@ export default function App() {
 
   if (loading) {
     return (
-      <div className="mobile-dvh w-full max-w-md mx-auto bg-[#0B1220] text-white flex items-center justify-center sm:border-x sm:border-slate-800">
+      <div className="mobile-dvh w-full max-w-md mx-auto bg-[#09090b] text-white flex items-center justify-center sm:border-x sm:border-zinc-800">
         <div className="text-center px-6">
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-sm text-slate-400">Conectando à plataforma Modo Aula…</p>
+          <div className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm text-zinc-400">Conectando à plataforma OnFocus…</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="mobile-dvh w-full max-w-md mx-auto bg-[#0B1220] flex flex-col overflow-hidden sm:border-x sm:border-slate-800">
+    <div className="mobile-dvh w-full max-w-md mx-auto bg-[#09090b] flex flex-col overflow-hidden sm:border-x sm:border-zinc-800">
       {status !== "home" && <TopBar />}
 
       <main className="flex-1 min-h-0 flex flex-col overflow-hidden">
@@ -169,7 +169,7 @@ export default function App() {
           <FinishedScreen data={data} onReturnHome={handleReturnHome} />
         )}
         {status === "home" && (
-          <PhoneHomeScreen onOpenModoAula={handleOpenModoAula} />
+          <PhoneHomeScreen onOpenOnFocus={handleOpenOnFocus} />
         )}
       </main>
     </div>

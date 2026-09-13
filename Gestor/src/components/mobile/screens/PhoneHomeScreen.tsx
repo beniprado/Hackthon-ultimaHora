@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-/* Ícones genéricos de sistema (só visuais, sem relação com o Modo Aula). */
+/* Ícones genéricos de sistema (só visuais, sem relação com o OnFocus). */
 
 function SysIcon({ label, bg, children }: { label: string; bg: string; children: React.ReactNode }) {
   return (
@@ -73,12 +73,12 @@ function MusicIcon() {
 }
 
 /**
- * Tela inicial do celular — demonstra que o aluno saiu TOTALMENTE do Modo Aula:
+ * Tela inicial do celular — demonstra que o aluno saiu TOTALMENTE do OnFocus:
  * papel de parede, relógio e ícones comuns, sem nenhum elemento do aplicativo
- * (sem TopBar, sem rodapé "Modo Aula Protegido", sem travas).
- * O app segue apenas instalado: o ícone "Modo Aula" reabre a leitura do QR Code.
+ * (sem TopBar, sem rodapé "OnFocus Protegido", sem travas).
+ * O app segue apenas instalado: o ícone "OnFocus" reabre a leitura do QR Code.
  */
-export function PhoneHomeScreen({ onOpenModoAula }: { onOpenModoAula: () => void }) {
+export function PhoneHomeScreen({ onOpenOnFocus }: { onOpenOnFocus: () => void }) {
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -90,12 +90,12 @@ export function PhoneHomeScreen({ onOpenModoAula }: { onOpenModoAula: () => void
   const date = now.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" });
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col overflow-hidden relative bg-slate-900">
+    <div className="flex-1 min-h-0 flex flex-col overflow-hidden relative bg-zinc-900">
       {/* Papel de parede */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-600 via-violet-500 to-orange-300" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-b from-violet-600 via-violet-500 to-orange-300" aria-hidden="true" />
       <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-white/20 blur-3xl" aria-hidden="true" />
       <div className="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-pink-300/40 blur-3xl" aria-hidden="true" />
-      <div className="absolute bottom-24 -left-24 w-72 h-72 rounded-full bg-indigo-900/40 blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-24 -left-24 w-72 h-72 rounded-full bg-violet-900/40 blur-3xl" aria-hidden="true" />
 
       <div className="relative flex-1 min-h-0 flex flex-col px-5 pt-[max(0.6rem,env(safe-area-inset-top))]">
         {/* Barra de status do sistema */}
@@ -121,29 +121,29 @@ export function PhoneHomeScreen({ onOpenModoAula }: { onOpenModoAula: () => void
         <div className="grid grid-cols-4 gap-y-3 shrink-0">
           <SysIcon label="Telefone" bg="bg-green-500"><PhoneIcon /></SysIcon>
           <SysIcon label="Mensagens" bg="bg-emerald-400"><MessagesIcon /></SysIcon>
-          <SysIcon label="Câmera" bg="bg-slate-500"><CameraIcon /></SysIcon>
+          <SysIcon label="Câmera" bg="bg-zinc-500"><CameraIcon /></SysIcon>
           <SysIcon label="Fotos" bg="bg-sky-400"><PhotosIcon /></SysIcon>
-          <SysIcon label="Relógio" bg="bg-slate-800"><ClockIcon /></SysIcon>
-          <SysIcon label="Navegador" bg="bg-blue-500"><BrowserIcon /></SysIcon>
+          <SysIcon label="Relógio" bg="bg-zinc-800"><ClockIcon /></SysIcon>
+          <SysIcon label="Navegador" bg="bg-violet-500"><BrowserIcon /></SysIcon>
           <SysIcon label="Música" bg="bg-rose-500"><MusicIcon /></SysIcon>
-          <SysIcon label="Ajustes" bg="bg-slate-400"><SettingsIcon /></SysIcon>
+          <SysIcon label="Ajustes" bg="bg-zinc-400"><SettingsIcon /></SysIcon>
         </div>
 
         {/* App instalado: reabre a leitura do QR Code */}
         <div className="mt-3 shrink-0">
           <button
             type="button"
-            onClick={onOpenModoAula}
+            onClick={onOpenOnFocus}
             className="w-full flex items-center gap-3 rounded-2xl bg-white/25 backdrop-blur-md px-3 py-2.5 text-left transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            <span className="w-12 h-12 rounded-[14px] bg-blue-600 flex items-center justify-center text-white shadow-md shrink-0">
+            <span className="w-12 h-12 rounded-[14px] bg-violet-600 flex items-center justify-center text-white shadow-md shrink-0">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
             </span>
             <span className="flex-1 min-w-0">
-              <span className="block text-white text-sm font-semibold drop-shadow">Modo Aula</span>
+              <span className="block text-white text-sm font-semibold drop-shadow">OnFocus</span>
               <span className="block text-white/80 text-[11px] drop-shadow">Toque para entrar na sala</span>
             </span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity=".9"><path d="M9 18l6-6-6-6" /></svg>
@@ -153,9 +153,9 @@ export function PhoneHomeScreen({ onOpenModoAula }: { onOpenModoAula: () => void
         {/* Dock */}
         <div className="mt-3 mb-1.5 rounded-3xl bg-white/25 backdrop-blur-md px-4 py-2.5 grid grid-cols-4 shrink-0">
           <SysIcon label="" bg="bg-green-500"><PhoneIcon /></SysIcon>
-          <SysIcon label="" bg="bg-blue-500"><BrowserIcon /></SysIcon>
+          <SysIcon label="" bg="bg-violet-500"><BrowserIcon /></SysIcon>
           <SysIcon label="" bg="bg-emerald-400"><MessagesIcon /></SysIcon>
-          <SysIcon label="" bg="bg-slate-500"><CameraIcon /></SysIcon>
+          <SysIcon label="" bg="bg-zinc-500"><CameraIcon /></SysIcon>
         </div>
 
         {/* Indicador home */}

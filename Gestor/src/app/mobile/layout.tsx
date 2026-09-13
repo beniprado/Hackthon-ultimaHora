@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  title: "Modo Aula — Aluno",
-  description: "Launcher protegido do Modo Aula para celulares do aluno.",
+  title: "OnFocus — Aluno",
+  description: "Launcher protegido do OnFocus para celulares do aluno.",
 };
 
 export const viewport: Viewport = {
@@ -10,7 +10,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: "cover",
-  themeColor: "#0B1220",
+  themeColor: "#09090B",
 };
 
 export default function MobileLayout({

@@ -39,17 +39,17 @@ export function ExitScanScreen({
             ENCERRANDO SESSÃO
           </p>
           <h1 className="text-white text-xl font-bold mt-1">Confirme sua saída</h1>
-          <p className="text-slate-400 text-[13px] mt-1.5 leading-snug text-center">
+          <p className="text-zinc-400 text-[13px] mt-1.5 leading-snug text-center">
             {scanning
               ? `Validando saída da ${sala?.nome || "Sala 302"}. Aguarde a confirmação.`
-              : "Escaneie o QR Code da sala para validar o encerramento do Modo Aula no seu dispositivo."}
+              : "Escaneie o QR Code da sala para validar o encerramento do OnFocus no seu dispositivo."}
           </p>
 
           {/* Leitor de QR Code */}
           <div className="relative w-32 h-32 mt-5 shrink-0" aria-hidden="true">
             <div className="absolute inset-0 rounded-[1.4rem] border-2 border-amber-400/70 animate-qr-ring" />
             <div className="absolute inset-2 rounded-[1.1rem] bg-amber-500/20 blur-xl" />
-            <div className="relative w-full h-full rounded-[1.1rem] bg-white p-2 shadow-lg shadow-blue-950/50">
+            <div className="relative w-full h-full rounded-[1.1rem] bg-white p-2 shadow-lg shadow-violet-950/50">
               <div className="relative w-full h-full overflow-hidden rounded-md">
                 <QrCodeArt />
                 <div className="absolute left-1 right-1 h-0.5 bg-amber-500 rounded-full shadow-[0_0_12px_3px_rgba(245,158,11,0.9)] animate-qr-scan-line" />
@@ -91,7 +91,7 @@ export function ExitScanScreen({
             type="button"
             onClick={onCancel}
             disabled={scanning}
-            className="mt-2.5 text-[13px] font-medium text-slate-400 hover:text-white active:text-white rounded-lg px-3 py-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 disabled:opacity-40"
+            className="mt-2.5 text-[13px] font-medium text-zinc-400 hover:text-white active:text-white rounded-lg px-3 py-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 disabled:opacity-40"
           >
             Cancelar e voltar ao launcher
           </button>
@@ -99,12 +99,12 @@ export function ExitScanScreen({
           <div className="w-full mt-3">
             <div className="bg-white rounded-xl p-3.5 shadow-sm">
               <div className="flex items-start gap-2.5">
-                <span className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${scanning ? "bg-amber-500 animate-pulse" : "bg-blue-500"}`} />
+                <span className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${scanning ? "bg-amber-500 animate-pulse" : "bg-violet-500"}`} />
                 <div>
-                  <p className="text-[11px] uppercase tracking-wide text-slate-500 font-mono">
+                  <p className="text-[11px] uppercase tracking-wide text-zinc-500 font-mono">
                     STATUS DO SISTEMA
                   </p>
-                  <p className="text-[13px] text-slate-700 mt-0.5 leading-snug">
+                  <p className="text-[13px] text-zinc-700 mt-0.5 leading-snug">
                     {scanning
                       ? "Validação de saída em andamento. Não saia desta tela até a confirmação."
                       : "Aguardando leitura do QR Code para registrar sua saída da aula."}
@@ -117,7 +117,7 @@ export function ExitScanScreen({
       </div>
 
       <div className="w-full shrink-0">
-        <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono px-6 py-2 border-t border-slate-800">
+        <div className="flex items-center justify-between text-[11px] text-zinc-500 font-mono px-6 py-2 border-t border-zinc-800">
           <span>ID DA SALA: {sala?.nfcTagId || "SALA-302"}</span>
           <span>V 1.8.2-BETA</span>
         </div>
