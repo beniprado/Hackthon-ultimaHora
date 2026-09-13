@@ -272,15 +272,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     addLog("FOCUS_BROADCAST", "Comando de foco transmitido: " + cmd.title, cmd.targetSalaId ? "Sala " + cmd.targetSalaId : "Todas as Salas");
     showToast("Comando \"" + cmd.title + "\" transmitido com sucesso aos alunos!");
 
-    // Real-time synchronization event for connected student mobile clients
+    // Real-time synchronization event for connected student mobile clients (intra-window & cross-tabs)
     if (typeof window !== "undefined") {
       window.dispatchEvent(new CustomEvent("onfocus-broadcast", { detail: newBroadcast }));
+      try {
+        localStorage.setItem("onfocus-broadcast", JSON.stringify({ ...newBroadcast, _nonce: Date.now() }));
+      } catch (e) {
+        console.warn("[OnFocus] Storage dispatch failed:", e);
+      }
     }
   };
 
   const clearBroadcast = () => {
     setActiveBroadcast(null);
     showToast("Transmissão de foco encerrada.");
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("onfocus-clear-broadcast"));
+      try {
+        localStorage.removeItem("onfocus-broadcast");
+      } catch (e) {}
+    }
   };
 
   // Dynamic QR Code generation with anti-replay guarantees
