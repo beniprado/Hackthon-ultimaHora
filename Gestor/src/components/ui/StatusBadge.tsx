@@ -43,33 +43,33 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
 }) => {
   const norm = status.trim().toUpperCase();
 
-  let colorClasses = "bg-zinc-800/80 text-zinc-400 border-zinc-700";
-  let dotColor = "bg-zinc-400";
+  let colorClasses = "bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-400 border-slate-300 dark:border-slate-700";
+  let dotColor = "bg-slate-400 dark:bg-slate-500";
 
-  // Electric Purple / Violet - Platform identity, Whitelist & Cryptographic status
-  if (["WHITELIST ATIVA", "ASSINADO", "ECDSA VÁLIDA", "CRIPTOGRAFADO", "SINCRONIZADO"].includes(norm)) {
-    colorClasses = "bg-violet-950/60 text-violet-300 border-violet-800/60 font-semibold";
-    dotColor = "bg-violet-400";
+  // Ciano Vibrante (Dark) / Deep Teal (Light) - Identidade OnFocus, Whitelist & Status Criptográfico
+  if (["WHITELIST ATIVA", "ASSINADO", "ECDSA VÁLIDA", "CRIPTOGRAFADO", "SINCRONIZADO", "FOCO ATIVO", "ECDSA"].includes(norm)) {
+    colorClasses = "bg-cyan-100 dark:bg-cyan-950/70 text-[#0e7c93] dark:text-cyan-300 border-cyan-300 dark:border-cyan-800/60 font-semibold";
+    dotColor = "bg-[#0e7c93] dark:bg-cyan-400";
   }
-  // Emerald - Active authorized apps in focus, connected, active class
+  // Emerald - Apps autorizados ativos, conectado, sala ativa
   else if (["AO VIVO", "ATIVO", "ATIVA", "AULA ATIVA", "CONECTADO", "NORMAL", "SUCESSO", "DISPONÍVEL", "DISPONIVEL", "VÁLIDA", "VALIDA"].includes(norm)) {
-    colorClasses = "bg-emerald-950/50 text-emerald-400 border-emerald-800/50 font-semibold";
-    dotColor = "bg-emerald-400";
+    colorClasses = "bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800/50 font-semibold";
+    dotColor = "bg-emerald-600 dark:bg-emerald-400";
   }
-  // Tangerine / Amber / Orange - Inactivity alerts, divergence, idle
+  // Tangerine / Amber - Alertas leves, ociosidade, pendência
   else if (["OCIOSO", "OCIOSA", "ATENÇÃO", "ATENCAO", "PENDENTE", "DIVERGÊNCIA", "DIVERGENCIA", "FOCO PARCIAL"].includes(norm)) {
-    colorClasses = "bg-amber-950/50 text-amber-400 border-amber-800/50 font-medium";
-    dotColor = "bg-amber-400";
+    colorClasses = "bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-800/50 font-medium";
+    dotColor = "bg-amber-600 dark:bg-amber-400";
   }
-  // Orange / Rose - Critical Alerts, Blocked, Interceptions
+  // Orange / Rose - Alertas críticos, bloqueios
   else if (["ALERTA", "BLOQUEADO", "ACESSO RESTRITO", "ERRO", "REVOGADA", "BATERIA CRÍTICA", "CRÍTICO"].includes(norm)) {
-    colorClasses = "bg-orange-950/60 text-orange-300 border-orange-800/60 font-semibold";
-    dotColor = "bg-orange-400";
+    colorClasses = "bg-orange-100 dark:bg-orange-950/60 text-orange-800 dark:text-orange-300 border-orange-300 dark:border-orange-800/60 font-semibold";
+    dotColor = "bg-orange-600 dark:bg-orange-400";
   }
-  // Zinc / Neutral - Scheduled / Finished / Offline
+  // Neutral - Agendada / Finalizada / Offline
   else if (["AGENDADA", "AGENDADO", "FINALIZADA", "FINALIZADO", "DESCONECTADO", "INATIVO", "OFFLINE"].includes(norm)) {
-    colorClasses = "bg-zinc-800/80 text-zinc-400 border-zinc-700";
-    dotColor = "bg-zinc-500";
+    colorClasses = "bg-slate-200 dark:bg-slate-800/80 text-slate-700 dark:text-slate-400 border-slate-300 dark:border-slate-700";
+    dotColor = "bg-slate-500";
   }
 
   return (

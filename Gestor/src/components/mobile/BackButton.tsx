@@ -19,7 +19,7 @@ export function BackButton({ onClick, label = "Voltar", tone = "light", classNam
       type="button"
       onClick={onClick}
       aria-label={label}
-      className={`inline-flex items-center gap-1.5 rounded-lg px-2 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 ${tones} ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-lg px-2 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ${tones} ${className}`}
     >
       <svg
         width="20"

@@ -86,19 +86,19 @@ export default function NovaAulaPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <Link href="/aulas" className="text-zinc-400 hover:text-zinc-100 transition-colors">
+            <Link href="/aulas" className="text-slate-500 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">
               <ArrowLeft className="w-4 h-4" />
             </Link>
-            <h1 className="text-xl sm:text-2xl font-bold text-zinc-100 tracking-tight">Configuração da Aula</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Configuração da Aula</h1>
           </div>
-          <p className="text-xs sm:text-sm text-zinc-400">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             Define os detalhes e as permissões de aplicativos para a próxima sessão.
           </p>
         </div>
 
         <button
           onClick={handleSaveConfig}
-          className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-white bg-violet-600 hover:bg-violet-500 rounded-lg shadow-md shadow-violet-600/20 border border-violet-500/30 transition-all self-start sm:self-auto active:scale-95"
+          className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-white dark:text-slate-950 bg-[#0e7c93] hover:bg-[#0b6376] dark:bg-cyan-500 dark:hover:bg-cyan-400 rounded-lg shadow-md shadow-cyan-500/20 transition-all self-start sm:self-auto active:scale-95"
         >
           <Save className="w-4 h-4" />
           <span>Salvar configuração</span>
@@ -112,25 +112,25 @@ export default function NovaAulaPage() {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Card: Informações Gerais */}
-          <div className="bg-zinc-900/90 border border-zinc-800/80 rounded-xl p-5 shadow-lg backdrop-blur-md space-y-4">
-            <div className="flex items-center gap-2 pb-3 border-b border-zinc-800/80">
-              <Info className="w-4 h-4 text-violet-400" />
-              <h3 className="text-sm font-bold text-zinc-100">Informações Gerais</h3>
+          <div className="bg-[#e0f7fb] dark:bg-[#132234] border border-[#cbd5e1] dark:border-[#1e293b] rounded-xl p-5 shadow-lg backdrop-blur-md space-y-4">
+            <div className="flex items-center gap-2 pb-3 border-b border-[#cbd5e1] dark:border-[#1e293b]">
+              <Info className="w-4 h-4 text-[#0e7c93] dark:text-cyan-400" />
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Informações Gerais</h3>
             </div>
-            <p className="text-xs text-zinc-400 -mt-2">
+            <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2">
               Preencha os dados básicos da aula programada.
             </p>
 
             {/* Turma Select */}
             <div>
-              <label className="block text-xs font-bold text-zinc-200 mb-1 flex items-center gap-1.5">
-                <Users className="w-3.5 h-3.5 text-zinc-400" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-200 mb-1 flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-400" />
                 <span>Turma</span>
               </label>
               <select
                 value={selectedTurmaId}
                 onChange={(e) => setSelectedTurmaId(e.target.value)}
-                className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-xs text-zinc-100 font-medium focus:outline-none focus:border-violet-500"
+                className="w-full p-2.5 bg-white dark:bg-zinc-950/80 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-xs text-slate-900 dark:text-zinc-100 font-medium focus:outline-none focus:border-cyan-500"
               >
                 {turmas.map(t => (
                   <option key={t.id} value={t.id}>{t.nome} — {t.ano}</option>
@@ -140,14 +140,14 @@ export default function NovaAulaPage() {
 
             {/* Disciplina Select */}
             <div>
-              <label className="block text-xs font-bold text-zinc-200 mb-1 flex items-center gap-1.5">
-                <BookOpen className="w-3.5 h-3.5 text-zinc-400" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-200 mb-1 flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-400" />
                 <span>Disciplina</span>
               </label>
               <select
                 value={selectedDisciplina}
                 onChange={(e) => setSelectedDisciplina(e.target.value)}
-                className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-xs text-zinc-100 font-medium focus:outline-none focus:border-violet-500"
+                className="w-full p-2.5 bg-white dark:bg-zinc-950/80 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-xs text-slate-900 dark:text-zinc-100 font-medium focus:outline-none focus:border-cyan-500"
               >
                 <option value="Matemática">Matemática</option>
                 <option value="Matemática Aplicada">Matemática Aplicada</option>
@@ -162,8 +162,8 @@ export default function NovaAulaPage() {
 
             {/* Sala Input */}
             <div>
-              <label className="block text-xs font-bold text-zinc-200 mb-1 flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-zinc-400" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-zinc-200 mb-1 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-400" />
                 <span>Sala</span>
               </label>
               <input
@@ -171,58 +171,58 @@ export default function NovaAulaPage() {
                 value={selectedSala}
                 onChange={(e) => setSelectedSala(e.target.value)}
                 placeholder="Ex: Sala 101 - Bloco B"
-                className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-xs text-zinc-100 font-medium focus:outline-none focus:border-violet-500"
+                className="w-full p-2.5 bg-white dark:bg-zinc-950/80 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-xs text-slate-900 dark:text-zinc-100 font-medium focus:outline-none focus:border-cyan-500"
               />
             </div>
 
             {/* Data & Hora Inputs */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-zinc-200 mb-1 flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-zinc-400" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-zinc-200 mb-1 flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-400" />
                   <span>Data</span>
                 </label>
                 <input
                   type="date"
                   value={dataAula}
                   onChange={(e) => setDataAula(e.target.value)}
-                  className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-xs text-zinc-100 font-mono focus:outline-none focus:border-violet-500"
+                  className="w-full p-2.5 bg-white dark:bg-zinc-950/80 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-xs text-slate-900 dark:text-zinc-100 font-mono focus:outline-none focus:border-cyan-500"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-zinc-200 mb-1 flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-zinc-400" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-zinc-200 mb-1 flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-400" />
                   <span>Hora de Início</span>
                 </label>
                 <input
                   type="time"
                   value={horaAula}
                   onChange={(e) => setHoraAula(e.target.value)}
-                  className="w-full p-2.5 bg-zinc-950/80 border border-zinc-800 rounded-lg text-xs text-zinc-100 font-mono focus:outline-none focus:border-violet-500"
+                  className="w-full p-2.5 bg-white dark:bg-zinc-950/80 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-xs text-slate-900 dark:text-zinc-100 font-mono focus:outline-none focus:border-cyan-500"
                 />
               </div>
             </div>
 
-            <p className="text-[11px] text-zinc-400 pt-2 flex items-center gap-1.5">
-              <Info className="w-3.5 h-3.5 flex-shrink-0 text-violet-400" />
+            <p className="text-[11px] text-slate-500 dark:text-zinc-400 pt-2 flex items-center gap-1.5">
+              <Info className="w-3.5 h-3.5 flex-shrink-0 text-[#0e7c93] dark:text-cyan-400" />
               <span>Estes dados serão transmitidos de forma segura para os dispositivos conectados.</span>
             </p>
           </div>
 
           {/* Card: Resumo da Configuração */}
-          <div className="bg-violet-950/40 border border-violet-800/60 rounded-xl p-5 shadow-lg">
-            <div className="flex items-center gap-2.5 text-violet-400 font-bold text-sm mb-2">
-              <ShieldCheck className="w-5 h-5 text-violet-400" />
+          <div className="bg-cyan-100/70 dark:bg-cyan-950/40 border border-cyan-300 dark:border-cyan-800/60 rounded-xl p-5 shadow-lg">
+            <div className="flex items-center gap-2.5 text-[#0e7c93] dark:text-cyan-400 font-bold text-sm mb-2">
+              <ShieldCheck className="w-5 h-5 text-[#0e7c93] dark:text-cyan-400" />
               <span>Resumo da Configuração</span>
             </div>
-            <p className="text-xs text-zinc-200 leading-relaxed font-medium">
-              <strong className="text-violet-400">{selectedApps.length} aplicativo(s) liberado(s)</strong> para uso pedagógico.
+            <p className="text-xs text-slate-800 dark:text-zinc-200 leading-relaxed font-medium">
+              <strong className="text-[#0e7c93] dark:text-cyan-300">{selectedApps.length} aplicativo(s) liberado(s)</strong> para uso pedagógico.
             </p>
-            <p className="text-[11px] text-zinc-400 mt-1">
+            <p className="text-[11px] text-slate-600 dark:text-zinc-400 mt-1">
               Turma: {selectedTurma?.nome || "1º A"} • {selectedDisciplina} ({selectedSala})
             </p>
-            <div className="mt-3 pt-3 border-t border-violet-800/40 flex items-center gap-1.5 text-[10px] text-zinc-400">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="mt-3 pt-3 border-t border-cyan-300/60 dark:border-cyan-800/40 flex items-center gap-1.5 text-[10px] text-slate-600 dark:text-zinc-400">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
               <span>Política vinculada à sessão de aula segura OnFocus.</span>
             </div>
           </div>
@@ -230,16 +230,16 @@ export default function NovaAulaPage() {
         </div>
 
         {/* RIGHT COLUMN: Aplicativos Permitidos (7 cols) */}
-        <div className="lg:col-span-7 bg-zinc-900/90 border border-zinc-800/80 rounded-xl p-5 shadow-lg backdrop-blur-md flex flex-col justify-between">
+        <div className="lg:col-span-7 bg-[#e0f7fb] dark:bg-[#132234] border border-[#cbd5e1] dark:border-[#1e293b] rounded-xl p-5 shadow-lg backdrop-blur-md flex flex-col justify-between">
           
           <div>
             {/* Header with counter */}
-            <div className="flex items-center justify-between pb-3 border-b border-zinc-800/80">
+            <div className="flex items-center justify-between pb-3 border-b border-[#cbd5e1] dark:border-[#1e293b]">
               <div>
-                <h3 className="text-sm font-bold text-zinc-100">Aplicativos Permitidos</h3>
-                <p className="text-xs text-zinc-400 mt-0.5">Selecione quais apps os alunos poderão utilizar.</p>
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white">Aplicativos Permitidos</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Selecione quais apps os alunos poderão utilizar.</p>
               </div>
-              <span className="text-xs font-bold text-violet-300 bg-violet-950 border border-violet-800/60 px-2.5 py-1 rounded-full">
+              <span className="text-xs font-bold text-[#0e7c93] dark:text-cyan-300 bg-cyan-100 dark:bg-cyan-950 border border-cyan-300 dark:border-cyan-800/60 px-2.5 py-1 rounded-full">
                 {selectedApps.length} Selecionados
               </span>
             </div>
@@ -247,20 +247,20 @@ export default function NovaAulaPage() {
             {/* Search and Filters */}
             <div className="mt-4 flex flex-col sm:flex-row gap-2.5">
               <div className="relative flex-1">
-                <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search className="w-4 h-4 text-slate-400 dark:text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   placeholder="Pesquisar aplicativos..."
                   value={appSearch}
                   onChange={(e) => setAppSearch(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-950/80 border border-zinc-800 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-violet-500 rounded-lg"
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-white dark:bg-zinc-950/80 border border-[#cbd5e1] dark:border-zinc-800 text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-cyan-500 rounded-lg"
                 />
               </div>
 
               <select
                 value={appCategoryFilter}
                 onChange={(e) => setAppCategoryFilter(e.target.value)}
-                className="py-1.5 px-3 text-xs bg-zinc-950/80 border border-zinc-800 rounded-lg text-zinc-200 font-medium focus:outline-none focus:border-violet-500"
+                className="py-1.5 px-3 text-xs bg-white dark:bg-zinc-950/80 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-slate-700 dark:text-zinc-200 font-medium focus:outline-none focus:border-cyan-500"
               >
                 <option value="TODAS">Todas as categorias</option>
                 <option value="Matemática">Matemática</option>
@@ -282,28 +282,28 @@ export default function NovaAulaPage() {
                     onClick={() => toggleAppSelection(app.id)}
                     className={"p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none " + (
                       isSelected 
-                        ? "border-violet-500/80 bg-violet-950/40 shadow-sm" 
-                        : "border-zinc-800 hover:border-zinc-700 bg-zinc-950/40 hover:bg-zinc-800/40"
+                        ? "border-cyan-500/80 bg-cyan-100/70 dark:bg-cyan-950/40 shadow-sm" 
+                        : "border-[#cbd5e1] dark:border-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 bg-white/70 dark:bg-zinc-950/40 hover:bg-slate-50 dark:hover:bg-zinc-800/40"
                     )}
                   >
                     <div className={"w-5 h-5 rounded mt-0.5 flex items-center justify-center border transition-colors " + (
                       isSelected 
-                        ? "bg-violet-600 border-violet-500 text-white" 
-                        : "border-zinc-700 bg-zinc-900"
+                        ? "bg-[#0e7c93] dark:bg-cyan-500 border-[#0e7c93] dark:border-cyan-400 text-white dark:text-slate-950" 
+                        : "border-slate-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"
                     )}>
                       {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1">
-                        <p className="text-xs font-bold text-zinc-100 truncate">{app.nome}</p>
+                        <p className="text-xs font-bold text-slate-900 dark:text-zinc-100 truncate">{app.nome}</p>
                         {isSelected && (
-                          <span className="text-[10px] font-bold text-violet-300 bg-violet-950 px-1.5 py-0.2 rounded border border-violet-800/60">
+                          <span className="text-[10px] font-bold text-[#0e7c93] dark:text-cyan-300 bg-cyan-100 dark:bg-cyan-950 px-1.5 py-0.2 rounded border border-cyan-300 dark:border-cyan-800/60">
                             Ativo
                           </span>
                         )}
                       </div>
-                      <p className="text-[11px] text-zinc-400 truncate mt-0.5">{app.subtitulo}</p>
+                      <p className="text-[11px] text-slate-500 dark:text-zinc-400 truncate mt-0.5">{app.subtitulo}</p>
                     </div>
                   </div>
                 );
@@ -312,9 +312,9 @@ export default function NovaAulaPage() {
           </div>
 
           {/* Bottom Action Footer */}
-          <div className="mt-6 pt-4 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
-            <p className="text-zinc-400 text-[11px] flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+          <div className="mt-6 pt-4 border-t border-[#cbd5e1] dark:border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
+            <p className="text-slate-500 dark:text-zinc-400 text-[11px] flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0e7c93] dark:bg-cyan-500" />
               <span>O bloqueio de apps externos à whitelist será automático.</span>
             </p>
 
@@ -322,14 +322,14 @@ export default function NovaAulaPage() {
               <button
                 type="button"
                 onClick={handleDeselectAll}
-                className="text-zinc-400 hover:text-zinc-200 transition-colors"
+                className="text-slate-500 dark:text-zinc-400 hover:text-slate-800 dark:hover:text-zinc-200 transition-colors"
               >
                 Desmarcar todos
               </button>
               <button
                 type="button"
                 onClick={handleSelectAll}
-                className="text-violet-400 hover:text-violet-300 transition-colors"
+                className="text-[#0e7c93] dark:text-cyan-400 hover:text-[#0b6376] dark:hover:text-cyan-300 transition-colors"
               >
                 Selecionar todos
               </button>

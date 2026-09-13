@@ -90,13 +90,13 @@ export const QRCodeGeneratorModal: React.FC<QRCodeGeneratorModalProps> = ({
       subtitle={`Sessão criptografada para ${selectedSala.nome} • Alunos escaneiam para entrar no Launcher Protegido`}
       maxWidth="xl"
     >
-      <div className="space-y-5 text-zinc-300">
+      <div className="space-y-5 text-slate-700 dark:text-zinc-300">
         
         {/* Main Card: QR Visual & Room Meta */}
-        <div className="flex flex-col md:flex-row items-center gap-6 p-5 bg-zinc-950/80 rounded-xl border border-zinc-800">
+        <div className="flex flex-col md:flex-row items-center gap-6 p-5 bg-white/80 dark:bg-slate-950/80 rounded-xl border border-[#cbd5e1] dark:border-[#1e293b]">
           
           {/* Stylized QR Code Visualizer */}
-          <div className="relative shrink-0 p-4 bg-white rounded-xl shadow-2xl border-4 border-violet-500/40 flex flex-col items-center justify-center">
+          <div className="relative shrink-0 p-4 bg-white rounded-xl shadow-2xl border-4 border-[#0e7c93]/40 dark:border-cyan-400/40 flex flex-col items-center justify-center">
             {/* SVG Stylized QR Code Matrix */}
             <svg
               viewBox="0 0 160 160"
@@ -111,17 +111,17 @@ export const QRCodeGeneratorModal: React.FC<QRCodeGeneratorModalProps> = ({
               {/* Top-Left */}
               <rect x="10" y="10" width="40" height="40" rx="4" fill="#09090b" />
               <rect x="18" y="18" width="24" height="24" rx="2" fill="white" />
-              <rect x="24" y="24" width="12" height="12" rx="1" fill="#7C3AED" />
+              <rect x="24" y="24" width="12" height="12" rx="1" fill="#0e7c93" />
 
               {/* Top-Right */}
               <rect x="110" y="10" width="40" height="40" rx="4" fill="#09090b" />
               <rect x="118" y="18" width="24" height="24" rx="2" fill="white" />
-              <rect x="124" y="24" width="12" height="12" rx="1" fill="#7C3AED" />
+              <rect x="124" y="24" width="12" height="12" rx="1" fill="#0e7c93" />
 
               {/* Bottom-Left */}
               <rect x="10" y="110" width="40" height="40" rx="4" fill="#09090b" />
               <rect x="18" y="118" width="24" height="24" rx="2" fill="white" />
-              <rect x="24" y="124" width="12" height="12" rx="1" fill="#7C3AED" />
+              <rect x="24" y="124" width="12" height="12" rx="1" fill="#0e7c93" />
 
               {/* Matrix Data Bits */}
               <g fill="#18181b">
@@ -198,7 +198,7 @@ export const QRCodeGeneratorModal: React.FC<QRCodeGeneratorModalProps> = ({
               </g>
 
               {/* Center Protected Badge */}
-              <circle cx="80" cy="80" r="14" fill="#7C3AED" />
+              <circle cx="80" cy="80" r="14" fill="#0e7c93" />
               <path
                 d="M75 79L78.5 82.5L85 76"
                 stroke="white"
@@ -216,32 +216,32 @@ export const QRCodeGeneratorModal: React.FC<QRCodeGeneratorModalProps> = ({
           {/* Info & Live TTL */}
           <div className="flex-1 space-y-3 w-full">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-violet-400 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-violet-400" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#0e7c93] dark:text-cyan-400 flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#0e7c93] dark:text-cyan-400" />
                 Token Dinâmico Efêmero
               </span>
-              <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-violet-950/80 text-violet-300 border border-violet-800/60">
+              <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950/80 text-[#0e7c93] dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60">
                 TTL: {timeLeft}s
               </span>
             </div>
 
-            <h4 className="text-base font-bold text-zinc-100">{selectedSala.nome}</h4>
-            <p className="text-xs text-zinc-400 leading-relaxed">
-              Aula: <strong className="text-zinc-200">{selectedAula.disciplina}</strong> ({selectedAula.turmaNome}) • Docente: <strong className="text-zinc-200">{selectedAula.professor}</strong>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white">{selectedSala.nome}</h4>
+            <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">
+              Aula: <strong className="text-slate-800 dark:text-zinc-200">{selectedAula.disciplina}</strong> ({selectedAula.turmaNome}) • Docente: <strong className="text-slate-800 dark:text-zinc-200">{selectedAula.professor}</strong>
             </p>
 
             {/* TTL Progress Bar */}
             <div className="space-y-1">
-              <div className="flex justify-between text-[11px] text-zinc-400 font-medium">
+              <div className="flex justify-between text-[11px] text-slate-500 dark:text-zinc-400 font-medium">
                 <span>Janela de Rotação Automática</span>
-                <span className={timeLeft <= 15 ? "text-amber-400 font-bold" : "text-zinc-300"}>
+                <span className={timeLeft <= 15 ? "text-amber-600 dark:text-amber-400 font-bold" : "text-slate-700 dark:text-zinc-300"}>
                   {timeLeft} segundos restantes
                 </span>
               </div>
-              <div className="w-full bg-zinc-800 rounded-full h-2 overflow-hidden">
+              <div className="w-full bg-slate-200 dark:bg-zinc-800 rounded-full h-2 overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-1000 ${
-                    timeLeft <= 15 ? "bg-amber-500" : "bg-violet-500"
+                    timeLeft <= 15 ? "bg-amber-500" : "bg-[#0e7c93] dark:bg-cyan-400"
                   }`}
                   style={{ width: `${(timeLeft / 60) * 100}%` }}
                 />
@@ -251,17 +251,17 @@ export const QRCodeGeneratorModal: React.FC<QRCodeGeneratorModalProps> = ({
             <div className="pt-2 flex flex-wrap gap-2">
               <button
                 onClick={refreshQRCode}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-zinc-200 bg-white dark:bg-zinc-800 hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-lg border border-[#cbd5e1] dark:border-zinc-700 transition-colors shadow-sm"
               >
-                <RotateCw className="w-3.5 h-3.5 text-violet-400" />
+                <RotateCw className="w-3.5 h-3.5 text-[#0e7c93] dark:text-cyan-400" />
                 <span>Rotacionar Chave Agora</span>
               </button>
 
               <button
                 onClick={handleCopyPayload}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-zinc-200 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-zinc-200 bg-white dark:bg-zinc-800 hover:bg-slate-100 dark:hover:bg-zinc-700 rounded-lg border border-[#cbd5e1] dark:border-zinc-700 transition-colors shadow-sm"
               >
-                {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-zinc-400" />}
+                {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-slate-500 dark:text-zinc-400" />}
                 <span>{isCopied ? "Copiado!" : "Copiar Payload JSON"}</span>
               </button>
             </div>
@@ -269,59 +269,59 @@ export const QRCodeGeneratorModal: React.FC<QRCodeGeneratorModalProps> = ({
         </div>
 
         {/* Collapsible Cryptographic Safeguards Section */}
-        <div className="rounded-xl border border-zinc-800 bg-zinc-950/60 overflow-hidden">
+        <div className="rounded-xl border border-[#cbd5e1] dark:border-zinc-800 bg-white/70 dark:bg-zinc-950/60 overflow-hidden">
           <button
             onClick={() => setShowCryptoDetails(!showCryptoDetails)}
-            className="w-full px-4 py-3 flex items-center justify-between text-xs font-bold text-zinc-200 hover:bg-zinc-900/60 transition-colors"
+            className="w-full px-4 py-3 flex items-center justify-between text-xs font-bold text-slate-800 dark:text-zinc-200 hover:bg-slate-100/60 dark:hover:bg-zinc-900/60 transition-colors"
           >
-            <div className="flex items-center gap-2 text-violet-400">
-              <Lock className="w-4 h-4 text-violet-400" />
+            <div className="flex items-center gap-2 text-[#0e7c93] dark:text-cyan-400">
+              <Lock className="w-4 h-4 text-[#0e7c93] dark:text-cyan-400" />
               <span>Garantias Criptográficas & Antifraude (Replay-Attack Protection)</span>
             </div>
-            {showCryptoDetails ? <ChevronUp className="w-4 h-4 text-zinc-500" /> : <ChevronDown className="w-4 h-4 text-zinc-500" />}
+            {showCryptoDetails ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
           </button>
 
           {showCryptoDetails && (
-            <div className="p-4 border-t border-zinc-800/80 space-y-3 font-mono text-[11px]">
+            <div className="p-4 border-t border-[#cbd5e1] dark:border-zinc-800/80 space-y-3 font-mono text-[11px]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div className="p-2.5 rounded-lg bg-zinc-900/90 border border-zinc-800">
-                  <span className="text-[10px] font-sans font-bold text-zinc-400 uppercase tracking-wider block mb-0.5">
+                <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800">
+                  <span className="text-[10px] font-sans font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider block mb-0.5">
                     1. Nonce Efêmero (Anti-Replay)
                   </span>
-                  <p className="text-violet-300 font-bold truncate">{payload.nonce}</p>
-                  <span className="text-[10px] font-sans text-zinc-500 block mt-0.5">
+                  <p className="text-[#0e7c93] dark:text-cyan-300 font-bold truncate">{payload.nonce}</p>
+                  <span className="text-[10px] font-sans text-slate-500 dark:text-zinc-500 block mt-0.5">
                     Impede o uso duplicado do mesmo frame de QR Code capturado.
                   </span>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-zinc-900/90 border border-zinc-800">
-                  <span className="text-[10px] font-sans font-bold text-zinc-400 uppercase tracking-wider block mb-0.5">
+                <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800">
+                  <span className="text-[10px] font-sans font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider block mb-0.5">
                     2. Hash BSSID Institucional (Proximidade)
                   </span>
-                  <p className="text-emerald-400 font-bold truncate">{payload.schoolBssidHash}</p>
-                  <span className="text-[10px] font-sans text-zinc-500 block mt-0.5">
+                  <p className="text-emerald-600 dark:text-emerald-400 font-bold truncate">{payload.schoolBssidHash}</p>
+                  <span className="text-[10px] font-sans text-slate-500 dark:text-zinc-500 block mt-0.5">
                     Garante presença física sob o ponto de acesso Wi-Fi da escola.
                   </span>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-zinc-900/90 border border-zinc-800">
-                  <span className="text-[10px] font-sans font-bold text-zinc-400 uppercase tracking-wider block mb-0.5">
+                <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800">
+                  <span className="text-[10px] font-sans font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider block mb-0.5">
                     3. Timestamp + TTL (Expiração)
                   </span>
-                  <p className="text-amber-300 font-bold">
+                  <p className="text-amber-600 dark:text-amber-300 font-bold">
                     {payload.timestamp} ({new Date(payload.timestamp * 1000).toLocaleTimeString()}) • TTL 60s
                   </p>
-                  <span className="text-[10px] font-sans text-zinc-500 block mt-0.5">
+                  <span className="text-[10px] font-sans text-slate-500 dark:text-zinc-500 block mt-0.5">
                     Invalida o código após término da janela de 60 segundos.
                   </span>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-zinc-900/90 border border-zinc-800">
-                  <span className="text-[10px] font-sans font-bold text-zinc-400 uppercase tracking-wider block mb-0.5">
+                <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800">
+                  <span className="text-[10px] font-sans font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider block mb-0.5">
                     4. Assinatura Digital ECDSA P-256
                   </span>
-                  <p className="text-cyan-300 font-bold truncate">{payload.signature}</p>
-                  <span className="text-[10px] font-sans text-zinc-500 block mt-0.5">
+                  <p className="text-[#0e7c93] dark:text-cyan-300 font-bold truncate">{payload.signature}</p>
+                  <span className="text-[10px] font-sans text-slate-500 dark:text-zinc-500 block mt-0.5">
                     Autenticidade matematicamente verificável pela chave pública da instituição.
                   </span>
                 </div>
@@ -332,13 +332,13 @@ export const QRCodeGeneratorModal: React.FC<QRCodeGeneratorModalProps> = ({
 
         {/* Action Footer */}
         <div className="pt-2 flex items-center justify-between">
-          <span className="text-xs text-zinc-400 flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <span className="text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1.5">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             Conforme às normas de segurança da informação e LGPD.
           </span>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white font-bold text-xs rounded-lg transition-colors shadow-md shadow-violet-600/20"
+            className="px-4 py-2 bg-[#0e7c93] hover:bg-[#0b6376] dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-slate-950 font-bold text-xs rounded-lg transition-colors shadow-md shadow-cyan-500/20"
           >
             Concluir & Fixar QR
           </button>

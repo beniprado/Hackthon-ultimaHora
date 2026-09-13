@@ -92,10 +92,10 @@ export function PhoneHomeScreen({ onOpenOnFocus }: { onOpenOnFocus: () => void }
   return (
     <div className="flex-1 min-h-0 flex flex-col overflow-hidden relative bg-zinc-900">
       {/* Papel de parede */}
-      <div className="absolute inset-0 bg-gradient-to-b from-violet-600 via-violet-500 to-orange-300" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0e7c93] via-cyan-600 to-sky-300" aria-hidden="true" />
       <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-white/20 blur-3xl" aria-hidden="true" />
       <div className="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-pink-300/40 blur-3xl" aria-hidden="true" />
-      <div className="absolute bottom-24 -left-24 w-72 h-72 rounded-full bg-violet-900/40 blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-24 -left-24 w-72 h-72 rounded-full bg-cyan-950/40 blur-3xl" aria-hidden="true" />
 
       <div className="relative flex-1 min-h-0 flex flex-col px-5 pt-[max(0.6rem,env(safe-area-inset-top))]">
         {/* Barra de status do sistema */}
@@ -124,7 +124,7 @@ export function PhoneHomeScreen({ onOpenOnFocus }: { onOpenOnFocus: () => void }
           <SysIcon label="Câmera" bg="bg-zinc-500"><CameraIcon /></SysIcon>
           <SysIcon label="Fotos" bg="bg-sky-400"><PhotosIcon /></SysIcon>
           <SysIcon label="Relógio" bg="bg-zinc-800"><ClockIcon /></SysIcon>
-          <SysIcon label="Navegador" bg="bg-violet-500"><BrowserIcon /></SysIcon>
+          <SysIcon label="Navegador" bg="bg-cyan-600"><BrowserIcon /></SysIcon>
           <SysIcon label="Música" bg="bg-rose-500"><MusicIcon /></SysIcon>
           <SysIcon label="Ajustes" bg="bg-zinc-400"><SettingsIcon /></SysIcon>
         </div>
@@ -136,7 +136,7 @@ export function PhoneHomeScreen({ onOpenOnFocus }: { onOpenOnFocus: () => void }
             onClick={onOpenOnFocus}
             className="w-full flex items-center gap-3 rounded-2xl bg-white/25 backdrop-blur-md px-3 py-2.5 text-left transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
           >
-            <span className="w-12 h-12 rounded-[14px] bg-violet-600 flex items-center justify-center text-white shadow-md shrink-0">
+            <span className="w-12 h-12 rounded-[14px] bg-[#0e7c93] flex items-center justify-center text-white shadow-md shrink-0">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -153,7 +153,7 @@ export function PhoneHomeScreen({ onOpenOnFocus }: { onOpenOnFocus: () => void }
         {/* Dock */}
         <div className="mt-3 mb-1.5 rounded-3xl bg-white/25 backdrop-blur-md px-4 py-2.5 grid grid-cols-4 shrink-0">
           <SysIcon label="" bg="bg-green-500"><PhoneIcon /></SysIcon>
-          <SysIcon label="" bg="bg-violet-500"><BrowserIcon /></SysIcon>
+          <SysIcon label="" bg="bg-cyan-600"><BrowserIcon /></SysIcon>
           <SysIcon label="" bg="bg-emerald-400"><MessagesIcon /></SysIcon>
           <SysIcon label="" bg="bg-zinc-500"><CameraIcon /></SysIcon>
         </div>

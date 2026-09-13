@@ -49,7 +49,7 @@ export function ExitScanScreen({
           <div className="relative w-32 h-32 mt-5 shrink-0" aria-hidden="true">
             <div className="absolute inset-0 rounded-[1.4rem] border-2 border-amber-400/70 animate-qr-ring" />
             <div className="absolute inset-2 rounded-[1.1rem] bg-amber-500/20 blur-xl" />
-            <div className="relative w-full h-full rounded-[1.1rem] bg-white p-2 shadow-lg shadow-violet-950/50">
+            <div className="relative w-full h-full rounded-[1.1rem] bg-white p-2 shadow-lg shadow-cyan-950/50">
               <div className="relative w-full h-full overflow-hidden rounded-md">
                 <QrCodeArt />
                 <div className="absolute left-1 right-1 h-0.5 bg-amber-500 rounded-full shadow-[0_0_12px_3px_rgba(245,158,11,0.9)] animate-qr-scan-line" />
@@ -99,7 +99,7 @@ export function ExitScanScreen({
           <div className="w-full mt-3">
             <div className="bg-white rounded-xl p-3.5 shadow-sm">
               <div className="flex items-start gap-2.5">
-                <span className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${scanning ? "bg-amber-500 animate-pulse" : "bg-violet-500"}`} />
+                <span className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${scanning ? "bg-amber-500 animate-pulse" : "bg-cyan-500"}`} />
                 <div>
                   <p className="text-[11px] uppercase tracking-wide text-zinc-500 font-mono">
                     STATUS DO SISTEMA

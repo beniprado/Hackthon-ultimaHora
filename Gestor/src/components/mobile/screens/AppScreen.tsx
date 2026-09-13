@@ -26,7 +26,7 @@ export function AppScreen({ data, appId, onBack, onFinish }: { data: MobileRespo
       <div className="flex items-center gap-1 pl-1 pr-3 py-1.5 border-b border-zinc-200 shrink-0 bg-white">
         <BackButton onClick={onBack} label="Apps" />
         <div className="flex items-center gap-2.5 flex-1 min-w-0">
-          <div className="w-9 h-9 rounded-lg bg-violet-600 text-white flex items-center justify-center text-base font-bold shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-[#0e7c93] text-white flex items-center justify-center text-base font-bold shrink-0">
             {(app?.nome || "A").charAt(0).toUpperCase()}
           </div>
           <div className="min-w-0">

@@ -7,14 +7,14 @@ export function FinishedScreen({ data, onReturnHome }: { data: MobileResponse | 
     <div className="flex-1 min-h-0 flex flex-col bg-white overflow-hidden">
       <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar">
         <div className="px-6 pt-6 pb-5 text-center">
-          <div className="w-24 h-24 mx-auto rounded-full bg-violet-50 flex items-center justify-center mb-3 relative">
-            <div className="w-20 h-20 rounded-full bg-white border-2 border-violet-600 flex items-center justify-center">
-              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#5B21B6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="w-24 h-24 mx-auto rounded-full bg-cyan-50 flex items-center justify-center mb-3 relative">
+            <div className="w-20 h-20 rounded-full bg-white border-2 border-[#0e7c93] flex items-center justify-center">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#0e7c93" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-white border-2 border-violet-600 flex items-center justify-center">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5B21B6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-white border-2 border-[#0e7c93] flex items-center justify-center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0e7c93" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -50,7 +50,7 @@ export function FinishedScreen({ data, onReturnHome }: { data: MobileResponse | 
           <button
             type="button"
             onClick={onReturnHome}
-            className="mt-5 w-full max-w-xs mx-auto block bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white font-medium py-3 px-4 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+            className="mt-5 w-full max-w-xs mx-auto block bg-[#0e7c93] hover:bg-[#0b6376] active:bg-[#084c5b] text-white font-medium py-3 px-4 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             <span className="flex items-center justify-center gap-2">
               Retornar ao Início

@@ -125,7 +125,7 @@ export default function App() {
     return (
       <div className="mobile-dvh w-full max-w-md mx-auto bg-[#09090b] text-white flex items-center justify-center sm:border-x sm:border-zinc-800">
         <div className="text-center px-6">
-          <div className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-12 h-12 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-sm text-zinc-400">Conectando à plataforma OnFocus…</p>
         </div>
       </div>

@@ -35,10 +35,10 @@ function GeogebraSim() {
           <rect width="400" height="300" fill="#E4E4E7" />
           <line x1="0" y1="150" x2="400" y2="150" stroke="#D4D4D8" strokeWidth="2" />
           <line x1="200" y1="0" x2="200" y2="300" stroke="#D4D4D8" strokeWidth="2" />
-          <circle cx="160" cy="150" r="60" fill="none" stroke="#7C3AED" strokeWidth="3" />
+          <circle cx="160" cy="150" r="60" fill="none" stroke="#0e7c93" strokeWidth="3" />
           <rect x="240" y="110" width="90" height="80" fill="none" stroke="#3F3F46" strokeWidth="3" />
           <polygon points="285,170 300,145 315,170" fill="none" stroke="#3F3F46" strokeWidth="3" />
-          <circle cx="160" cy="150" r="3" fill="#7C3AED" />
+          <circle cx="160" cy="150" r="3" fill="#0e7c93" />
         </svg>
         <div className="absolute bottom-3 left-3 bg-white rounded-lg px-3 py-1.5 shadow-sm text-[13px] font-mono text-zinc-700">
           A: (2.45, 5.12)
@@ -122,7 +122,7 @@ function CalculadoraSim() {
     "py-2.5 text-lg font-medium rounded-none transition-colors focus:outline-none ";
   const numCls = keyCls + "bg-white text-zinc-800 hover:bg-zinc-100 active:bg-zinc-200";
   const opCls = (active: boolean) =>
-    keyCls + (active ? "bg-violet-600 text-white" : "bg-zinc-50 text-violet-700 hover:bg-zinc-100 active:bg-zinc-200");
+    keyCls + (active ? "bg-[#0e7c93] text-white" : "bg-zinc-50 text-[#0e7c93] hover:bg-zinc-100 active:bg-zinc-200");
 
   const Key = ({ label, onPress, className, span }: { label: string; onPress: () => void; className: string; span?: boolean }) => (
     <button
@@ -162,7 +162,7 @@ function CalculadoraSim() {
           <Key label="+" onPress={() => inputOperator("+")} className={opCls(op === "+")} />
           <Key label="0" onPress={() => inputDigit("0")} className={numCls} span />
           <Key label="." onPress={() => inputDigit(".")} className={numCls} />
-          <Key label="=" onPress={equals} className={keyCls + "bg-violet-600 text-white hover:bg-violet-500 active:bg-violet-700"} />
+          <Key label="=" onPress={equals} className={keyCls + "bg-[#0e7c93] text-white hover:bg-[#0b6376] active:bg-[#084c5b]"} />
         </div>
       </div>
 
@@ -197,7 +197,7 @@ function DocsSim() {
               A fórmula de Bhaskara resolve equações do tipo{" "}
               <span className="font-mono bg-zinc-100 px-1 rounded">ax² + bx + c = 0</span>:
             </p>
-            <p className="font-mono text-center bg-violet-50 text-violet-900 rounded-lg py-2">
+            <p className="font-mono text-center bg-cyan-50 text-cyan-900 rounded-lg py-2">
               x = (−b ± √Δ) / 2a
             </p>
             <p>
@@ -205,7 +205,7 @@ function DocsSim() {
             </p>
             <p>
               • Se <span className="font-mono">Δ = 0</span>, há uma raiz real dupla.
-              <span className="inline-block w-[7px] h-4 bg-violet-600 ml-1 align-middle animate-pulse" />
+              <span className="inline-block w-[7px] h-4 bg-[#0e7c93] ml-1 align-middle animate-pulse" />
             </p>
           </div>
         </div>
@@ -239,7 +239,7 @@ function ArquivosSim() {
       <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar bg-white px-2 py-1">
         {FILES.map((f) => (
           <div key={f.name} className="flex items-center gap-3 px-2 py-2.5 rounded-xl">
-            <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${f.folder ? "bg-violet-50 text-violet-700" : "bg-zinc-100 text-zinc-600"}`}>
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${f.folder ? "bg-cyan-50 text-[#0e7c93]" : "bg-zinc-100 text-zinc-600"}`}>
               {f.folder ? (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
               ) : (
@@ -266,7 +266,7 @@ function GenericSim({ appName, subtexto }: { appName: string; subtexto: string }
   return (
     <>
       <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar bg-zinc-50 flex flex-col items-center justify-center px-8 py-6 text-center">
-        <div className="w-20 h-20 rounded-3xl bg-violet-600 text-white flex items-center justify-center text-3xl font-bold shadow-lg shadow-violet-200">
+        <div className="w-20 h-20 rounded-3xl bg-[#0e7c93] text-white flex items-center justify-center text-3xl font-bold shadow-lg shadow-cyan-200">
           {(appName || "A").charAt(0).toUpperCase()}
         </div>
         <p className="mt-4 font-bold text-zinc-900 text-lg">{appName || "Aplicativo"}</p>

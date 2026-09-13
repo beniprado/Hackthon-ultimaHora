@@ -47,17 +47,17 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-150">
       <div 
-        className={"w-full bg-zinc-900/95 backdrop-blur-xl rounded-xl shadow-2xl shadow-black/80 border border-zinc-800 overflow-hidden transform transition-all text-zinc-100 " + maxWidthClasses}
+        className={"w-full bg-[#e0f7fb] dark:bg-[#132234] backdrop-blur-xl rounded-xl shadow-2xl shadow-slate-900/30 dark:shadow-black/80 border border-[#cbd5e1] dark:border-[#1e293b] overflow-hidden transform transition-all text-slate-900 dark:text-white " + maxWidthClasses}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-4 border-b border-zinc-800/80 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-[#cbd5e1] dark:border-[#1e293b] flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-bold text-zinc-100 tracking-tight">{title}</h3>
-            {subtitle && <p className="text-xs text-zinc-400 mt-0.5">{subtitle}</p>}
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">{title}</h3>
+            {subtitle && <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{subtitle}</p>}
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 rounded-lg transition-colors"
+            className="p-1.5 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800 rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>

@@ -3,32 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --primary: #7C3AED;
-  --background: #09090b;
-  --foreground: #f4f4f5;
-  --card: #18181b;
+  --bg-page: #f1f5f9;
+  --bg-surface: #e0f7fb;
+  --accent-primary: #0e7c93;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-subtle: #cbd5e1;
+}
+
+.dark {
+  --bg-page: #0a0f1e;
+  --bg-surface: #132234;
+  --accent-primary: #22d3ee;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --border-subtle: #1e293b;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text-primary);
+  background: var(--bg-page);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Custom scrollbars */
+/* Custom scrollbars (adaptáveis a Light/Dark) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #18181b;
+  background: #cbd5e1;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #132234;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: #94a3b8;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: #64748b;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
 /* ===== App Mobile — Modo Aula (aluno) ===== */

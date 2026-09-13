@@ -30,7 +30,7 @@ export function BlockedScreen({ data, appId, onBack }: { data: MobileResponse | 
           <button
             type="button"
             onClick={onBack}
-            className="mt-5 w-full max-w-xs mx-auto block bg-violet-600 hover:bg-violet-700 active:bg-violet-800 text-white font-medium py-3 px-4 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
+            className="mt-5 w-full max-w-xs mx-auto block bg-[#0e7c93] hover:bg-[#0b6376] active:bg-[#084c5b] text-white font-medium py-3 px-4 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             <span className="flex items-center justify-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>

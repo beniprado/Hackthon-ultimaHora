@@ -11,10 +11,10 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col font-sans text-zinc-100 antialiased selection:bg-violet-600/30 selection:text-violet-300">
+    <div className="min-h-screen bg-[#f1f5f9] dark:bg-[#0a0f1e] flex flex-col font-sans text-slate-900 dark:text-white antialiased selection:bg-cyan-500/30 selection:text-cyan-900 dark:selection:text-cyan-200 transition-colors duration-200">
       <div className="flex flex-1 h-screen overflow-hidden">
-        {/* Desktop Sidebar */}
-        <div className="hidden lg:block h-full">
+        {/* Desktop Sidebar - Altura Total Garantida */}
+        <div className="hidden lg:flex h-screen sticky top-0 shrink-0">
           <Sidebar />
         </div>
 
@@ -25,11 +25,11 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
               className="fixed inset-0 bg-black/70 backdrop-blur-sm"
               onClick={() => setIsMobileMenuOpen(false)} 
             />
-            <div className="relative w-72 bg-zinc-900 border-r border-zinc-800 h-full shadow-2xl z-10 flex flex-col">
+            <div className="relative w-72 bg-[#e0f7fb] dark:bg-[#132234] border-r border-[#cbd5e1] dark:border-[#1e293b] h-full shadow-2xl z-10 flex flex-col">
               <div className="absolute top-4 right-4 z-20">
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-zinc-400 hover:text-zinc-100 bg-zinc-800 rounded-full"
+                  className="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-200 dark:bg-slate-800 rounded-full transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -49,12 +49,12 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }
             </div>
 
             {/* Global Page Footer */}
-            <footer className="max-w-7xl mx-auto w-full pt-8 pb-4 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-3">
+            <footer className="max-w-7xl mx-auto w-full pt-8 pb-4 border-t border-[#cbd5e1] dark:border-[#1e293b] flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-3">
               <p>© 2026 OnFocus — Gestão Escolar & Foco Pedagógico Ativo</p>
               <div className="flex items-center gap-4">
-                <Link href="/configuracoes?tab=termos" className="hover:text-zinc-300 transition-colors">Termos de Uso</Link>
-                <Link href="/configuracoes?tab=privacidade" className="hover:text-zinc-300 transition-colors">Privacidade (LGPD)</Link>
-                <Link href="/configuracoes?tab=suporte" className="hover:text-zinc-300 transition-colors">Suporte</Link>
+                <Link href="/configuracoes?tab=termos" className="hover:text-cyan-700 dark:hover:text-cyan-400 transition-colors">Termos de Uso</Link>
+                <Link href="/configuracoes?tab=privacidade" className="hover:text-cyan-700 dark:hover:text-cyan-400 transition-colors">Privacidade (LGPD)</Link>
+                <Link href="/configuracoes?tab=suporte" className="hover:text-cyan-700 dark:hover:text-cyan-400 transition-colors">Suporte</Link>
               </div>
             </footer>
           </main>

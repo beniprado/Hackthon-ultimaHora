@@ -65,25 +65,25 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
       subtitle={`Envie comandos pedagógicos imediatos aos smartphones dos alunos em ${selectedSalaObj.nome}`}
       maxWidth="lg"
     >
-      <div className="space-y-5 text-zinc-300">
+      <div className="space-y-5 text-slate-700 dark:text-zinc-300">
         
         {/* Active Broadcast Alert banner */}
         {activeBroadcast && (
-          <div className="p-3.5 bg-violet-950/60 border border-violet-800/80 rounded-xl flex items-center justify-between">
+          <div className="p-3.5 bg-cyan-100 dark:bg-cyan-950/60 border border-cyan-300 dark:border-cyan-800/80 rounded-xl flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-violet-400 animate-ping" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0e7c93] dark:bg-cyan-400 animate-ping" />
               <div>
-                <p className="text-xs font-bold text-violet-200">
+                <p className="text-xs font-bold text-[#0e7c93] dark:text-cyan-200">
                   Broadcast Ativo: {activeBroadcast.title}
                 </p>
-                <p className="text-[11px] text-zinc-400">
+                <p className="text-[11px] text-slate-500 dark:text-zinc-400">
                   Transmitido às {activeBroadcast.timestamp} por {activeBroadcast.sentBy}
                 </p>
               </div>
             </div>
             <button
               onClick={clearBroadcast}
-              className="px-2.5 py-1 text-xs font-semibold text-rose-300 bg-rose-950/50 hover:bg-rose-900/60 border border-rose-800/60 rounded-lg transition-colors"
+              className="px-2.5 py-1 text-xs font-semibold text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-950/50 hover:bg-rose-200 dark:hover:bg-rose-900/60 border border-rose-300 dark:border-rose-800/60 rounded-lg transition-colors"
             >
               Encerrar
             </button>
@@ -92,13 +92,13 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
 
         {/* Room Selector */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400 mb-1.5">
             Sala de Destino da Transmissão
           </label>
           <select
             value={selectedSalaId}
             onChange={(e) => setSelectedSalaId(e.target.value)}
-            className="w-full p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-xs text-zinc-200 font-medium focus:outline-none focus:border-violet-500"
+            className="w-full p-2.5 bg-white dark:bg-zinc-950 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-xs text-slate-900 dark:text-zinc-200 font-medium focus:outline-none focus:border-cyan-500"
           >
             <option value="TODAS">Todas as Salas Ativas ({salas.length} salas)</option>
             {salas.map((s) => (
@@ -111,7 +111,7 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
 
         {/* Custom Pedagogical Note */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400 mb-1.5">
             Instrução Pedagógica Adicional (Opcional)
           </label>
           <input
@@ -119,13 +119,13 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
             placeholder="Ex: Abram a atividade 4 na página 52 do livro..."
             value={customMessage}
             onChange={(e) => setCustomMessage(e.target.value)}
-            className="w-full p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-violet-500"
+            className="w-full p-2.5 bg-white dark:bg-zinc-950 border border-[#cbd5e1] dark:border-zinc-800 rounded-lg text-xs text-slate-900 dark:text-zinc-200 placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-cyan-500"
           />
         </div>
 
         {/* Action Grid: High-Impact Pedagogical Actions */}
         <div>
-          <p className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2.5">
+          <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400 mb-2.5">
             Selecione o Comando para Disparar:
           </p>
 
@@ -140,21 +140,21 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
                 "GeoGebra",
                 "Abram a atividade de Geometria Analítica na página 42."
               )}
-              className="p-3.5 bg-zinc-950/80 hover:bg-violet-950/40 border border-zinc-800 hover:border-violet-500/60 rounded-xl text-left transition-all group flex flex-col justify-between"
+              className="p-3.5 bg-white dark:bg-zinc-950/80 hover:bg-cyan-50 dark:hover:bg-cyan-950/40 border border-[#cbd5e1] dark:border-zinc-800 hover:border-cyan-500/60 rounded-xl text-left transition-all group flex flex-col justify-between shadow-sm"
             >
               <div className="flex items-start justify-between">
-                <div className="p-2 rounded-lg bg-violet-950/80 border border-violet-800/60 text-violet-400 group-hover:scale-110 transition-transform">
+                <div className="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-950/80 border border-cyan-300 dark:border-cyan-800/60 text-[#0e7c93] dark:text-cyan-400 group-hover:scale-110 transition-transform">
                   <Compass className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-violet-950 text-violet-300 border border-violet-800/60">
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-cyan-100 dark:bg-cyan-950 text-[#0e7c93] dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800/60">
                   Whitelist
                 </span>
               </div>
               <div className="mt-3">
-                <h4 className="text-xs font-bold text-zinc-100 group-hover:text-violet-300 transition-colors">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-zinc-100 group-hover:text-[#0e7c93] dark:group-hover:text-cyan-300 transition-colors">
                   Iniciar GeoGebra
                 </h4>
-                <p className="text-[11px] text-zinc-400 mt-0.5">
+                <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
                   Abre instantaneamente o ambiente gráfico nos smartphones.
                 </p>
               </div>
@@ -169,21 +169,21 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
                 "Calculadora",
                 "Usem a calculadora nos cálculos de física."
               )}
-              className="p-3.5 bg-zinc-950/80 hover:bg-emerald-950/40 border border-zinc-800 hover:border-emerald-500/60 rounded-xl text-left transition-all group flex flex-col justify-between"
+              className="p-3.5 bg-white dark:bg-zinc-950/80 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 border border-[#cbd5e1] dark:border-zinc-800 hover:border-emerald-500/60 rounded-xl text-left transition-all group flex flex-col justify-between shadow-sm"
             >
               <div className="flex items-start justify-between">
-                <div className="p-2 rounded-lg bg-emerald-950/80 border border-emerald-800/60 text-emerald-400 group-hover:scale-110 transition-transform">
+                <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400 group-hover:scale-110 transition-transform">
                   <Calculator className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800/60">
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800/60">
                   Ferramenta
                 </span>
               </div>
               <div className="mt-3">
-                <h4 className="text-xs font-bold text-zinc-100 group-hover:text-emerald-300 transition-colors">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-zinc-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">
                   Abrir Calculadora
                 </h4>
-                <p className="text-[11px] text-zinc-400 mt-0.5">
+                <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
                   Habilita modo de resolução de equações e cálculos.
                 </p>
               </div>
@@ -198,21 +198,21 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
                 undefined,
                 "Pausa nos smartphones: Olhem para a lousa para a explicação principal."
               )}
-              className="p-3.5 bg-zinc-950/80 hover:bg-amber-950/40 border border-zinc-800 hover:border-amber-500/60 rounded-xl text-left transition-all group flex flex-col justify-between"
+              className="p-3.5 bg-white dark:bg-zinc-950/80 hover:bg-amber-50 dark:hover:bg-amber-950/40 border border-[#cbd5e1] dark:border-zinc-800 hover:border-amber-500/60 rounded-xl text-left transition-all group flex flex-col justify-between shadow-sm"
             >
               <div className="flex items-start justify-between">
-                <div className="p-2 rounded-lg bg-amber-950/80 border border-amber-800/60 text-amber-400 group-hover:scale-110 transition-transform">
+                <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-950/80 border border-amber-300 dark:border-amber-800/60 text-amber-700 dark:text-amber-400 group-hover:scale-110 transition-transform">
                   <Eye className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800/60">
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60">
                   Atenção
                 </span>
               </div>
               <div className="mt-3">
-                <h4 className="text-xs font-bold text-zinc-100 group-hover:text-amber-300 transition-colors">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-zinc-100 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
                   Modo Atenção Geral
                 </h4>
-                <p className="text-[11px] text-zinc-400 mt-0.5">
+                <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
                   Suspende temporariamente as telas para foco na aula expositiva.
                 </p>
               </div>
@@ -227,21 +227,21 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
                 undefined,
                 "Aula finalizada. Dispositivos liberados para uso pessoal."
               )}
-              className="p-3.5 bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl text-left transition-all group flex flex-col justify-between"
+              className="p-3.5 bg-white dark:bg-zinc-950/80 hover:bg-slate-100 dark:hover:bg-zinc-900 border border-[#cbd5e1] dark:border-zinc-800 hover:border-slate-400 dark:hover:border-zinc-700 rounded-xl text-left transition-all group flex flex-col justify-between shadow-sm"
             >
               <div className="flex items-start justify-between">
-                <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-700 text-zinc-300 group-hover:scale-110 transition-transform">
+                <div className="p-2 rounded-lg bg-slate-100 dark:bg-zinc-900 border border-slate-300 dark:border-zinc-700 text-slate-700 dark:text-zinc-300 group-hover:scale-110 transition-transform">
                   <Unlock className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 text-slate-700 dark:text-zinc-400 border border-slate-300 dark:border-zinc-700">
                   Desbloqueio
                 </span>
               </div>
               <div className="mt-3">
-                <h4 className="text-xs font-bold text-zinc-100 group-hover:text-zinc-200 transition-colors">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-zinc-100 group-hover:text-slate-800 dark:group-hover:text-zinc-200 transition-colors">
                   Liberar Smartphones
                 </h4>
-                <p className="text-[11px] text-zinc-400 mt-0.5">
+                <p className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
                   Desativa o Launcher Seguro e encerra a política de aula.
                 </p>
               </div>
@@ -251,11 +251,11 @@ export const FocusBroadcastModal: React.FC<FocusBroadcastModalProps> = ({
         </div>
 
         {/* Footer info */}
-        <div className="pt-2 flex items-center justify-between border-t border-zinc-800/80 text-xs text-zinc-500">
+        <div className="pt-2 flex items-center justify-between border-t border-[#cbd5e1] dark:border-zinc-800/80 text-xs text-slate-500 dark:text-zinc-500">
           <span>Disparado via WebSocket / Canal criptográfico OnFocus</span>
           <button
             onClick={onClose}
-            className="px-3.5 py-1.5 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 rounded-lg font-medium transition-colors"
+            className="px-3.5 py-1.5 text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-zinc-200 hover:bg-slate-200/60 dark:hover:bg-zinc-800 rounded-lg font-medium transition-colors"
           >
             Fechar
           </button>

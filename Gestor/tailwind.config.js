@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,24 +9,31 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: "#f5f3ff",
-          100: "#ede9fe",
-          200: "#ddd6fe",
-          300: "#c4b5fd",
-          400: "#a78bfa",
-          500: "#7C3AED", // Cor primária oficial OnFocus (Electric Violet)
-          600: "#6D28D9",
-          700: "#5B21B6",
-          800: "#4C1D95",
-          900: "#2E1065",
+        // Tokens Oficiais OnFocus (Alinhamento com Pitch Slides)
+        navy: {
+          bg: "#0a0f1e", // Dark Mode Page Background
+          card: "#132234", // Dark Mode Card/Surface
+          border: "#1e293b", // Dark Mode Border
+          hover: "#182c44",
         },
-        onfocus: {
-          violet: "#7C3AED",
-          purple: "#8B5CF6",
-          amber: "#F59E0B",
-          orange: "#F97316",
-          emerald: "#10B981",
+        ice: {
+          bg: "#f1f5f9", // Light Mode Page Background
+          card: "#e0f7fb", // Light Mode Card/Surface
+          border: "#cbd5e1", // Light Mode Border
+          hover: "#d0f1f7",
+        },
+        brand: {
+          50: "#ecfeff",
+          100: "#cffafe",
+          200: "#a5f3fc",
+          300: "#67e8f9",
+          400: "#22d3ee", // Ciano Vibrante Oficial (Dark Mode Accent)
+          500: "#06b6d4",
+          600: "#0891b2",
+          700: "#0e7c93", // Deep Teal/Cyan Oficial (Light Mode Accent)
+          800: "#155e75",
+          900: "#164e63",
+          950: "#083344",
         },
       },
       fontFamily: {
