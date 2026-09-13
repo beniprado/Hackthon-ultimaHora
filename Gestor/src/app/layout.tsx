@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AppProvider } from "@/context/AppContext";
-import { MainLayout } from "@/components/layout/MainLayout";
 
 export const metadata: Metadata = {
   title: "Modo Aula — Gestão Escolar Inteligente e Dispositivos Seguros",
@@ -15,12 +13,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="bg-[#F8FAFC] text-slate-900 min-h-screen">
-        <AppProvider>
-          <MainLayout>
-            {children}
-          </MainLayout>
-        </AppProvider>
+      <body className="bg-[#F8FAFC] text-slate-900 min-h-screen antialiased">
+        {children}
       </body>
     </html>
   );

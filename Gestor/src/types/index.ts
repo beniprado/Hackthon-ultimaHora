@@ -145,3 +145,71 @@ export interface Policy {
   createdAt: string;
   updatedAt: string;
 }
+
+export type AppMobileStatus =
+  | "standby"
+  | "active"
+  | "app"
+  | "blocked"
+  | "checkout"
+  | "finished"
+  | "home";
+
+export interface MobileAula {
+  id: string;
+  disciplina: string;
+  turmaNome: string;
+  professor: string;
+  sala: string;
+  horarioInicio: string;
+  horarioFim: string;
+  status: string;
+  appsPermitidosIds: string[];
+}
+
+export interface MobileSala {
+  id: string;
+  nome: string;
+  bloco: string;
+  nfcTagId: string;
+  nfcStatus: string;
+  status: string;
+}
+
+export interface MobileTurma {
+  id: string;
+  nome: string;
+  ano: string;
+  disciplina: string;
+  professor: string;
+  horario: string;
+}
+
+export interface MobileApp {
+  id: string;
+  nome: string;
+  subtexto: string;
+  packageName: string;
+  categoria: string;
+  icone: string;
+}
+
+export interface MobileLog {
+  id: string;
+  timestamp: string;
+  tipo: string;
+  description: string;
+  sala?: string;
+  aluno?: string;
+}
+
+export interface MobileResponse {
+  ok: boolean;
+  timestamp: string;
+  aula: MobileAula | null;
+  sala: MobileSala | null;
+  turma: MobileTurma | null;
+  appsAutorizados: MobileApp[];
+  dispositivosConectados: number;
+  logsRecentes: MobileLog[];
+}

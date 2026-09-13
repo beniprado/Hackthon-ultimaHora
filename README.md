@@ -29,6 +29,7 @@
 O **Modo Aula** resolve o dilema entre o potencial pedagógico dos smartphones e as distrações digitais em sala de aula. Em vez de recolher os aparelhos ou adotar softwares invasivos de espionagem, a plataforma estabelece uma **política pedagógica temporária**:
 
 1. **Aproximação NFC**: O aluno encosta o smartphone na Tag NFC da carteira/sala no início da aula.
+2. **Leitura do QR Code**: Na simulação mobile, o aluno toca em **“Acessar com QR Code”** na tela inicial para validar a entrada na sala (sem pular direto para o launcher).
 2. **Whitelist Pedagógica**: O aparelho entra no *Launcher Protegido*, disponibilizando exclusivamente os aplicativos autorizados pelo professor para aquela disciplina (ex: GeoGebra, Calculadora, Dicionário).
 3. **Foco Ativo**: Notificações, redes sociais e jogos são suspensos durante o período da aula.
 4. **Desbloqueio Automático**: Ao término do horário ou por comando do docente, o smartphone retorna instantaneamente ao modo pessoal do aluno.
@@ -123,9 +124,9 @@ Localizado no diretório [`/AppMobile`](file:///Users/beniprado/Desktop/platafor
 
 1. **Tela 1 — Standby & Conexão**:
    - O aluno abre o aplicativo na escola e verifica a conexão com a rede Wi-Fi institucional segura.
-2. **Tela 2 — Scan NFC da Sala**:
-   - Ao entrar na sala de aula, o aluno aproxima o smartphone da Tag NFC fixada na mesa ou no ambiente.
-   - O app valida a assinatura digital da Tag (chave ECDSA) e registra a presença na aula ativa.
+2. **Tela 2 — Leitura do QR Code da Sala**:
+   - Ao entrar na sala de aula, o aluno toca em **“Acessar com QR Code”** para simular a leitura do código fixado na mesa ou no ambiente.
+   - O app valida a sala e registra a presença na aula ativa antes de liberar o launcher.
 3. **Tela 3 — Launcher Protegido**:
    - O launcher padrão do Android é temporariamente substituído pelo *Launcher Seguro Modo Aula*.
    - Apenas os ícones dos aplicativos liberados para a aula atual ficam visíveis e acessíveis.
@@ -133,8 +134,10 @@ Localizado no diretório [`/AppMobile`](file:///Users/beniprado/Desktop/platafor
    - O aluno utiliza a ferramenta pedagógica designada (exemplo: **GeoGebra interativo**, calculadora, leitor de PDF).
 5. **Tela 5 — Alerta Educativo de Foco**:
    - Caso o aluno tente alternar para um aplicativo não autorizado ou burlar a proteção, o sistema intercepta e exibe uma tela educativa de conscientização, emitindo alerta discreto no painel do professor.
-6. **Tela 6 — Aula Finalizada / Desbloqueio**:
-   - Ao término da aula (por horário ou encerramento pelo professor), o smartphone desativa o Modo Aula e retorna ao estado normal do sistema operacional.
+6. **Tela 6 — Validação de Saída + Aula Finalizada / Desbloqueio**:
+   - Ao tocar em **“Encerrar”**, o aluno valida a saída com uma nova leitura do **QR Code da sala** (com loading simulado).
+   - Confirmada a saída, o smartphone desativa o Modo Aula e retorna ao estado normal do sistema operacional.
+   - O “Retornar ao Início” leva à tela inicial do celular (papel de parede + relógio), provando que o aluno saiu totalmente do app.
 
 ### Segurança do Dispositivo & Kiosk Mode
 

@@ -29,3 +29,50 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* ===== App Mobile — Modo Aula (aluno) ===== */
+
+/* Altura travada na viewport real do celular (com fallback p/ browsers antigos).
+   O shell do /mobile usa essa classe p/ ocupar a tela toda sem gerar scroll de página. */
+.mobile-dvh {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Rolagem interna invisível (usada nas áreas de conteúdo das telas do aluno) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Linha de leitura que percorre o QR Code na tela de escaneamento */
+@keyframes qr-scan-line {
+  0%, 100% { top: 6%; opacity: 0; }
+  12% { opacity: 1; }
+  50% { top: 90%; opacity: 1; }
+  88% { opacity: 1; }
+}
+.animate-qr-scan-line {
+  animation: qr-scan-line 2.4s ease-in-out infinite;
+}
+
+/* Anel pulsante atrás do leitor de QR Code */
+@keyframes qr-ring-pulse {
+  0% { transform: scale(1); opacity: 0.45; }
+  100% { transform: scale(1.28); opacity: 0; }
+}
+.animate-qr-ring {
+  animation: qr-ring-pulse 2.4s ease-out infinite;
+}
+
+/* Brilho do botão durante a leitura simulada */
+@keyframes qr-reading-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+.animate-qr-reading {
+  animation: qr-reading-glow 1s ease-in-out infinite;
+}
