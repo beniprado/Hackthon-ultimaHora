@@ -9,16 +9,23 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          50: "#eff8ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#1683D8", // Cor primária oficial do Modo Aula
-          600: "#106bb5",
-          700: "#0b518c",
-          800: "#083c69",
-          900: "#062b4c",
+          50: "#f5f3ff",
+          100: "#ede9fe",
+          200: "#ddd6fe",
+          300: "#c4b5fd",
+          400: "#a78bfa",
+          500: "#7C3AED", // Cor primária oficial OnFocus (Electric Violet)
+          600: "#6D28D9",
+          700: "#5B21B6",
+          800: "#4C1D95",
+          900: "#2E1065",
+        },
+        onfocus: {
+          violet: "#7C3AED",
+          purple: "#8B5CF6",
+          amber: "#F59E0B",
+          orange: "#F97316",
+          emerald: "#10B981",
         },
       },
       fontFamily: {

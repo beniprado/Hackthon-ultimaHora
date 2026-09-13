@@ -125,7 +125,10 @@ export interface LogEvento {
     | "DEVICE_IDLE" 
     | "BATTERY_LOW" 
     | "POLICY_UPDATED" 
-    | "POLICY_REVOKED";
+    | "POLICY_REVOKED"
+    | "FOCUS_BROADCAST"
+    | "FOCUS_INTERCEPTION"
+    | "QR_ROTATED";
   descricao: string;
   sala?: string;
   aluno?: string;
@@ -145,3 +148,58 @@ export interface Policy {
   createdAt: string;
   updatedAt: string;
 }
+
+// -------------------------------------------------------------
+// OnFocus Pedagogical & Security Enhancements
+// -------------------------------------------------------------
+
+export type BroadcastCommandType = 
+  | "LAUNCH_APP" 
+  | "LOCK_FOCUS" 
+  | "RELEASE_DEVICE" 
+  | "CALL_ATTENTION";
+
+export interface BroadcastCommand {
+  id: string;
+  type: BroadcastCommandType;
+  title: string;
+  payload?: {
+    packageName?: string;
+    appName?: string;
+    message?: string;
+  };
+  timestamp: string;
+  sentBy: string;
+  targetSalaId?: string;
+}
+
+export interface DynamicQRCodePayload {
+  version: string; // "onfocus-v1"
+  roomId: string;
+  roomName: string;
+  aulaId: string;
+  schoolBssidHash: string; // SHA-256 of institutional BSSID
+  nonce: string; // Cryptographic nonce (anti-replay)
+  timestamp: number; // Epoch timestamp (seconds)
+  ttlSeconds: number; // Token lifetime in seconds (e.g. 60)
+  signature: string; // ECDSA_SHA256 digital signature
+}
+
+export interface OfflineSessionPolicy {
+  sessionId: string;
+  sessionExpirationTimestamp: number; // Unix timestamp in seconds
+  allowedPackages: string[];
+  schoolBssidHash: string;
+  strictKioskMode: boolean;
+}
+
+export interface FocusInterceptionTelemetry {
+  id: string;
+  timestamp: string;
+  salaNome: string;
+  // LGPD Privacy by Design: strictly minimized data.
+  // Never records private app package names, titles, or screen content.
+  focusInterceptionCount: number;
+  durationSeconds: number;
+}
+
