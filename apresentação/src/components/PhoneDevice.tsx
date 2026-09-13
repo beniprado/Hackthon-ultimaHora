@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Lock, Radio, CheckCircle2, Battery, AlertTriangle, 
   Activity, ChevronRight, FileText, Smartphone, ShieldCheck,
-  BookOpen, Calculator, Compass, Sparkles, Wifi
+  BookOpen, Calculator, Compass, Sparkles, Wifi, Heart, Award
 } from 'lucide-react';
 
 export type ScreenType = 
@@ -187,10 +187,10 @@ export const PhoneDevice: React.FC<PhoneDeviceProps> = ({ currentScreen }) => {
 
                 <div className="bg-white/[0.04] p-3 rounded-2xl border border-cyan-500/20 text-left text-xs shadow-md">
                   <span className="text-[9px] font-bold text-cyan-400 block uppercase tracking-wider mb-0.5 font-mono">
-                    ASSINATURA CRIPTOGRÁFICA
+                    ASSINATURA DIGITAL • TAG NFC
                   </span>
                   <span className="font-mono text-slate-300 text-[11px] block">
-                    ECDSA P-256 • Tag #101-B
+                    ECDSA P-256 • Renovada a cada 24h
                   </span>
                 </div>
               </motion.div>
@@ -313,7 +313,7 @@ export const PhoneDevice: React.FC<PhoneDeviceProps> = ({ currentScreen }) => {
               </motion.div>
             )}
 
-            {/* SCREEN 5: Acesso Restrito */}
+            {/* SCREEN 5: Tela de Reflexão Consciente */}
             {currentScreen === 'restricted' && (
               <motion.div
                 key="screen-restricted"
@@ -324,33 +324,34 @@ export const PhoneDevice: React.FC<PhoneDeviceProps> = ({ currentScreen }) => {
                 className="flex-1 flex flex-col justify-between text-center py-2 text-white"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-rose-500/15 border border-rose-500/30 mx-auto flex items-center justify-center relative mb-2 shadow-[0_0_20px_rgba(244,63,94,0.25)]">
-                    <AlertTriangle className="w-6 h-6 text-rose-400" />
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 mx-auto flex items-center justify-center relative mb-2 shadow-[0_0_20px_rgba(245,158,11,0.25)]">
+                    <Heart className="w-6 h-6 text-amber-400" />
                   </div>
 
-                  <span className="text-[10px] font-bold text-rose-400 uppercase tracking-widest block mb-1 font-mono">
-                    ACESSO RESTRITO
+                  <span className="text-[9.5px] font-bold text-amber-400 uppercase tracking-widest block mb-1 font-mono">
+                    REFLEXÃO EM VEZ DE PUNIÇÃO
                   </span>
                   <h4 className="text-sm font-bold text-white font-space mb-1">
-                    Aplicativo em pausa durante a aula
+                    Pausa Consciente
                   </h4>
-                  <p className="text-xs text-slate-400 px-2 mb-3 leading-relaxed">
-                    O OnFocus mantém seu foco protegido na explicação do professor.
+                  <p className="text-xs text-slate-300 px-2 mb-3 leading-relaxed">
+                    Você tentou abrir um app fora da lista. O OnFocus propõe reflexão sobre o uso, não bloqueio agressivo.
                   </p>
 
-                  <div className="w-full py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.12] border border-white/[0.1] text-white font-space font-bold text-xs transition-colors">
-                    &lt; Voltar ao Launcher Seguro
+                  <div className="w-full py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400/30 text-cyan-200 font-space font-bold text-xs transition-colors flex items-center justify-center gap-1.5">
+                    <Compass className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Retomar GeoGebra em Aula</span>
                   </div>
                 </div>
 
-                <div className="bg-white/[0.03] p-2 rounded-xl border border-white/[0.06] text-left text-xs">
-                  <span className="text-[9px] font-bold text-slate-400 block font-mono">POLÍTICA PEDAGÓGICA</span>
-                  <span className="font-semibold text-slate-200 text-[11px]">Sala 101 • Bloqueio Inteligente</span>
+                <div className="bg-white/[0.04] p-2 rounded-xl border border-white/[0.08] text-left text-xs">
+                  <span className="text-[9px] font-bold text-slate-400 block font-mono">SAÚDE MENTAL & PRIVACIDADE</span>
+                  <span className="text-slate-300 text-[10.5px]">Sem acesso a mensagens, microfone, câmera ou arquivos.</span>
                 </div>
               </motion.div>
             )}
 
-            {/* SCREEN 6: Desbloqueio Pós-Aula */}
+            {/* SCREEN 6: Desbloqueio Pós-Aula + Selo de Foco */}
             {currentScreen === 'unlocked' && (
               <motion.div
                 key="screen-unlocked"
@@ -362,21 +363,25 @@ export const PhoneDevice: React.FC<PhoneDeviceProps> = ({ currentScreen }) => {
               >
                 <div>
                   <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-400/40 mx-auto flex items-center justify-center text-emerald-400 mb-2 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                    <CheckCircle2 className="w-7 h-7" />
+                    <Award className="w-7 h-7 text-emerald-300" />
                   </div>
-                  <h4 className="text-lg font-bold text-white font-space mb-1">Aula Finalizada</h4>
+                  <h4 className="text-lg font-bold text-white font-space mb-0.5">Aula Finalizada</h4>
+                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-[10px] font-mono text-emerald-300 mb-2">
+                    <Sparkles className="w-3 h-3 text-amber-400" />
+                    <span>Selo de Foco Conquistado!</span>
+                  </div>
                   <p className="text-xs text-slate-300 px-2 mb-3 leading-relaxed">
-                    Sessão pedagógica concluída. Todas as funções do seu smartphone foram liberadas.
+                    Ao fim do horário, o controle total do aparelho volta automaticamente ao aluno.
                   </p>
 
                   <div className="bg-white/[0.04] p-3 rounded-2xl border border-white/[0.08] text-left text-xs space-y-1 shadow-sm">
                     <span className="text-[9px] font-bold text-emerald-400 uppercase block font-mono">STATUS DO DISPOSITIVO</span>
-                    <span className="font-bold text-white text-sm font-space">Dispositivo Desbloqueado</span>
+                    <span className="font-bold text-white text-sm font-space">Dispositivo 100% Liberado</span>
                   </div>
                 </div>
 
                 <div className="text-[10px] text-slate-400 font-mono">
-                  Sessão de 50 minutos concluída com sucesso.
+                  Sessão pedagógica concluída • Autonomia restaurada
                 </div>
               </motion.div>
             )}
